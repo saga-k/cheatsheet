@@ -11,7 +11,7 @@ export default{
 
   methods:{
     onClick(){
-      this.$emit('SetSize', {
+      this.$emit('emitSize', {
       height: Number(this.height),
       width:Number(this.width)
       })
@@ -19,7 +19,7 @@ export default{
   },
 
   emits:{
-    SetSize: (payload) => {
+    emitSize: (payload) => {
       return(
         typeof payload === 'object' &&
         typeof payload.height === 'number' &&
