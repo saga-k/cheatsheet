@@ -5,11 +5,16 @@ export default{
 name: 'HomeView',
 components:{
   SizeInput,
+},
+methods:{
+  onSetSize(Size){
+  console.log('size', Size)
+  }
 }
 }
 </script>
 
 <template>
 <h1>test</h1>
-<SizeInput/>
+<SizeInput @SetSize="onSetSize"/>
 </template>
