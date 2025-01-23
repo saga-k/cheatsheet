@@ -3,13 +3,12 @@ export default {
   name: 'MultiSelectDropdown',
 
   created(){
-    this.localData = this.titleProp
-    console.log('fromprop', this.localData)
+    this.createTitles()
   },
 
   data(){
     return {
-    localData: null
+    titles: []
     }
   },
 
@@ -18,11 +17,24 @@ export default {
       type: Array,
       required: true
     }
+  },
+
+  methods:{
+    createTitles(){
+      for(let i = 0; i<this.titleProp.length;i++){
+        this.titles.push(this.titleProp[i].title)
+      }
+      console.log(this.titles)
+    }
   }
 }
 
 </script>
 
 <template>
-  <p v-for="item in localData">{{item.title}}</p>
+  <v-autocomplete
+  v-if="titles.length>0"
+  label="choosePrinciple"
+  :items = "titles"
+   > 0"></v-autocomplete>
 </template>

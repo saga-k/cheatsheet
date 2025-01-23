@@ -36,3 +36,13 @@ export default{
 <input v-model="height" id="input-height" type="number">
 <button @click="onClick">Set</button>
 </template>
+
+<style scoped>
+input{
+  border: solid black 1px;
+}
+
+button{
+  background-color: lightgrey;
+}
+</style>

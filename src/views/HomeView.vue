@@ -10,7 +10,7 @@ name: 'HomeView',
 components:{
   SizeInput,
   MyCanvas,
-  MultiSelectDropdown
+  MultiSelectDropdown,
 },
 
 data(){
