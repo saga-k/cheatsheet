@@ -6,9 +6,18 @@ export default {
     this.createTitles()
   },
 
+  watch:{
+    selectedTitles(newVal, oldVal){
+      console.log(newVal)
+
+    }
+  },
+
   data(){
     return {
-    titles: []
+    titles: [],
+
+    selectedTitles:[]
     }
   },
 
@@ -24,7 +33,11 @@ export default {
       for(let i = 0; i<this.titleProp.length;i++){
         this.titles.push(this.titleProp[i].title)
       }
-      console.log(this.titles)
+      //console.log(this.titles)
+    },
+
+    onClick(){
+
     }
   }
 }
@@ -33,8 +46,12 @@ export default {
 
 <template>
   <v-autocomplete
-  v-if="titles.length>0"
   label="choosePrinciple"
   :items = "titles"
-   > 0"></v-autocomplete>
+  v-model="selectedTitles"
+  chips
+  multiple
+  >
+  <v-list-item>{{ titles }}</v-list-item>
+   </v-autocomplete>
 </template>
