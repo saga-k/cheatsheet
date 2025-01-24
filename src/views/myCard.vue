@@ -1,9 +1,9 @@
 <script>
 export default {
-  name: 'VuetifyTest'
+  name: 'myCards'
 }
 </script>
 
 <template>
-  <v-autocomplete></v-autocomplete>
+  <slot><p>test</p></slot>
 </template>

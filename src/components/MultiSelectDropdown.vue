@@ -2,44 +2,67 @@
 export default {
   name: 'MultiSelectDropdown',
 
-  created(){
-    this.createTitles()
-  },
-
-  watch:{
-    selectedTitles(newVal, oldVal){
-      console.log(newVal)
-
-    }
-  },
-
-  data(){
-    return {
-    titles: [],
-
-    selectedTitles:[]
-    }
-  },
-
   props:{
-    titleProp: {
+    dataProp: {
       type: Array,
       required: true
     }
   },
 
-  methods:{
-    createTitles(){
-      for(let i = 0; i<this.titleProp.length;i++){
-        this.titles.push(this.titleProp[i].title)
-      }
-      //console.log(this.titles)
-    },
+  data(){
+    return {
+    localData: this.dataProp,
 
-    onClick(){
+    titles: [],
+
+    selectedTitles:[],
+
+    selectedPrinciples:[]
+
 
     }
+  },
+
+  created(){
+    this.populateDropdown()
+  },
+
+  watch:{
+    selectedTitles(newVal){
+      this.findSame(newVal)
+      this.$emit('selectionUpdated', this.selectedPrinciples)
+    }
+  },
+
+  methods:{
+    populateDropdown(){
+      for (let i = 0;i < this.localData.length; i++){
+        let title = this.localData[i].title
+        this.titles.push(title)
+      }
+    },
+
+    findSame(newVal){
+      let selected = []
+        for (let i = 0; i<this.localData.length; i++){
+
+            for (let j=0; j<newVal.length; j++){
+
+              let titleOne = this.localData[i].title
+              let titleTwo = newVal[j]
+
+                if(titleOne === titleTwo){
+                selected.push(titleOne)
+                }
+            }
+        }
+
+      this.selectedPrinciples = selected
+      console.log('to emit',this.selectedPrinciples)
+      }
   }
+
+
 }
 
 </script>
