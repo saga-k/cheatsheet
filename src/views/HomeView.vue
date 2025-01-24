@@ -62,6 +62,6 @@ methods:{
 <SizeInput @emitSize="updateCanvasSize"/>
 <MultiSelectDropdown @selectionUpdated="updateCards" v-if="isFetched" :data-prop="fetchedData"/>
 <MyCanvas :style="{height:canvasSize.height, width: canvasSize.width}"/>
-<myCard v-for="(card, index) in cards" :key="index"><p>{{ card.title }}</p></myCard>
+<myCard v-for="(card, index) in cards" :key="index" :card-prop="card"/>
 
 </template>
