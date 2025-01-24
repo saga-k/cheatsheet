@@ -52,7 +52,7 @@ export default {
               let titleTwo = newVal[j]
 
                 if(titleOne === titleTwo){
-                selected.push(titleOne)
+                selected.push(this.localData[i])
                 }
             }
         }

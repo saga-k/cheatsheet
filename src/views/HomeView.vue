@@ -26,7 +26,7 @@ return{
     width: null
   },
 
-  onCanvasCards:null
+  cards:null
 }
 },
 
@@ -49,7 +49,8 @@ methods:{
 
   updateCards(newValue){
     console.log('updated')
-    this.onCanvasCards = newValue
+    this.cards = newValue
+    console.log('cards', this.cards)
   }
 }
 
@@ -61,6 +62,6 @@ methods:{
 <SizeInput @emitSize="updateCanvasSize"/>
 <MultiSelectDropdown @selectionUpdated="updateCards" v-if="isFetched" :data-prop="fetchedData"/>
 <MyCanvas :style="{height:canvasSize.height, width: canvasSize.width}"/>
-<myCard v-for="onCanvasCard in onCanvasCards">{{ onCanvasCard.title }}</myCard>
+<myCard v-for="(card, index) in cards" :key="index"><p>{{ card.title }}</p></myCard>
 
 </template>
