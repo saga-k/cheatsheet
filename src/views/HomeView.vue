@@ -23,12 +23,17 @@ return{
 
   canvasSize:{
     height: null,
-    width: null
+    width: null,
+    scrollHeight: null,
+    scrollWidth: null
   },
 
   canvasSet: false,
 
-  cards:[]
+  hasOverflow: false,
+
+  cards:[],
+
 }
 },
 
@@ -38,8 +43,8 @@ this.fetchData()
 
 methods:{
   updateCanvasSize(Size){
-  this.canvasSize.height = `${Size.height}px`;
-  this.canvasSize.width = `${Size.width}px`;
+  this.canvasSize.height = `${Size.height}`;
+  this.canvasSize.width = `${Size.width}`;
   this.canvasSet = true
   },
 
@@ -51,19 +56,26 @@ methods:{
   },
 
   addCard(added){
-    console.log('updated', added)
     this.cards.push(added)
-    console.log('cards', this.cards)
+    this.canvasSize.scrollHeight = this.$refs.MyCanvas.$refs.canvasSection.scrollHeight
+    this.canvasSize.scrollWidth = this.$refs.MyCanvas.$refs.canvasSection.scrollWidth
+    console.log('canvasSize', this.canvasSize)
   },
 
   removeCard(removed){
 
     let found = this.cards.find(value => value.title === removed)
-    console.log('found', found)
     let index = this.cards.indexOf(found)
-    console.log(index)
     this.cards.splice(index, 1)
-    console.log('this.cards:',this.cards)
+    this.canvasSize.scrollHeight = this.$refs.MyCanvas.$refs.canvasSection.scrollHeight
+    this.canvasSize.scrollWidth = this.$refs.MyCanvas.$refs.canvasSection.scrollWidth
+    console.log('canvasSize', this.canvasSize)
+  }
+},
+computed:{
+  checkOverflow(){
+    return this.canvasSize.scrollWidth > Number(this.canvasSize.width) ||
+    this.canvasSize.scrollHeight > Number(this.canvasSize.height)
   }
 }
 
@@ -73,9 +85,25 @@ methods:{
 <template>
 <h1>test</h1>
 <SizeInput @emitSize="updateCanvasSize"/>
-<MultiSelectDropdown @cardAdded="addCard" @cardRemoved="removeCard" v-if="isFetched" :data-prop="fetchedData"/>
-<MyCanvas v-if="canvasSet===true" :style="{height:canvasSize.height, width: canvasSize.width}">
-  <myCard v-if="cards!==null" v-for="card in cards"  :key="card.id" :card-prop="card"/>
+<MultiSelectDropdown
+@cardAdded="addCard"
+@cardRemoved="removeCard"
+v-if="isFetched"
+:data-prop="fetchedData"/>
+
+<p v-if="checkOverflow">Testing error</p>
+
+<MyCanvas
+v-if="canvasSet===true"
+:style="{height:canvasSize.height + 'px', width: canvasSize.width + 'px'}"
+ref="MyCanvas">
+
+  <myCard
+  v-if="cards!==null"
+  v-for="card in cards"
+  :key="card.id"
+  :card-prop="card"/>
+
 </MyCanvas>
 
 </template>

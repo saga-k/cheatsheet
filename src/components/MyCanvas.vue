@@ -19,16 +19,14 @@ export default {
 </script>
 
 <template>
-
-<section>
-<slot><p>Select cards to add</p></slot>
-</section>
-
+  <section ref="canvasSection">
+    <slot><p>Select cards to add</p></slot>
+  </section>
 </template>
 
 <style scoped>
 section{
+  border: solid 1px black;
   overflow: hidden;
-  border: 1px solid black;
 }
 </style>
