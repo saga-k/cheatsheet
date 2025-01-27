@@ -28,9 +28,11 @@ export default {
   },
 
   watch:{
-    selectedTitles(newVal){
-      this.findSame(newVal)
-      this.$emit('selectionUpdated', this.selectedPrinciples)
+    selectedTitles(newVal, oldVal){
+      if(newVal.length>oldVal.length){
+      let emit = this.findSame(newVal)
+      this.$emit('cardAdded', emit)
+      }
     }
   },
 
@@ -43,6 +45,22 @@ export default {
     },
 
     findSame(newVal){
+
+        for (let i = 0; i<this.localData.length; i++){
+
+          let index = newVal.length-1
+          let dropdownTitle = newVal[index]
+          let objectTitle = this.localData[i].title
+          let object = this.localData[i]
+
+          if(objectTitle === dropdownTitle){
+            console.log('to emit', object)
+            return object
+          }
+        }
+      },
+    /*
+    keepforlater(newVal){
       let selected = []
         for (let i = 0; i<this.localData.length; i++){
 
@@ -59,7 +77,8 @@ export default {
 
       this.selectedPrinciples = selected
       console.log('to emit',this.selectedPrinciples)
-      }
+    },
+    */
   }
 
 

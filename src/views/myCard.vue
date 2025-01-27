@@ -12,7 +12,8 @@ export default {
   data(){
     return {
       cardTitle: this.cardProp.title,
-      code: this.cardProp.code
+      code: this.cardProp.code,
+      description: this.cardProp.description
     }
   }
 
@@ -22,6 +23,7 @@ export default {
 <template>
   <section>
     <h2>{{cardTitle}}</h2>
+    <p v-if="description!==null">{{ description }}</p>
     <pre>
   <code>
  {{ code }}
@@ -32,7 +34,7 @@ export default {
 
 <style scoped>
 section{
-  outline: solid black 1 px;
+  border: solid black 1 px;
 }
 
 </style>
