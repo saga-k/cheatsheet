@@ -1,95 +1,114 @@
 [
   {
+    "id": 1,
     "title": "Variables",
     "code": "let name = \"John\"; // Reassignable\nconst age = 30;    // Cannot be reassigned\nvar city = \"Paris\"; // Function-scoped",
     "description": null
   },
   {
+    "id": 2,
     "title": "Arrow Functions",
     "code": "const add = (a, b) => a + b;\nconsole.log(add(2, 3)); // Output: 5",
     "description": null
   },
   {
+    "id": 3,
     "title": "Array Methods - map",
     "code": "const numbers = [1, 2, 3, 4];\nconst doubled = numbers.map(num => num * 2); \nconsole.log(doubled); // [2, 4, 6, 8]",
     "description": "Creates a new array by applying a function to each element."
   },
   {
+    "id": 4,
     "title": "Array Methods - filter",
     "code": "const numbers = [1, 2, 3, 4];\nconst evens = numbers.filter(num => num % 2 === 0); \nconsole.log(evens); // [2, 4]",
     "description": "Creates a new array with elements that pass a test."
   },
   {
+    "id": 5,
     "title": "Array Methods - reduce",
     "code": "const numbers = [1, 2, 3, 4];\nconst sum = numbers.reduce((total, num) => total + num, 0); \nconsole.log(sum); // 10",
     "description": "Reduces the array to a single value using a function."
   },
   {
+    "id": 6,
     "title": "Array Methods - forEach",
     "code": "const numbers = [1, 2, 3];\nnumbers.forEach(num => console.log(num));\n// Output: 1, 2, 3",
     "description": "Executes a function for each element (does not return a new array)."
   },
   {
+    "id": 7,
     "title": "Array Methods - find",
     "code": "const numbers = [5, 12, 8, 130];\nconst found = numbers.find(num => num > 10); \nconsole.log(found); // 12",
     "description": "Returns the first element that matches a condition."
   },
   {
+    "id": 8,
     "title": "Array Methods - findIndex",
     "code": "const numbers = [5, 12, 8, 130];\nconst index = numbers.findIndex(num => num > 10); \nconsole.log(index); // 1",
     "description": "Returns the index of the first element that matches a condition."
   },
   {
+    "id": 9,
     "title": "Array Methods - some",
     "code": "const numbers = [1, 2, 3];\nconst hasEven = numbers.some(num => num % 2 === 0); \nconsole.log(hasEven); // true",
     "description": "Returns `true` if at least one element matches the condition."
   },
   {
+    "id": 10,
     "title": "Array Methods - every",
     "code": "const numbers = [2, 4, 6];\nconst allEven = numbers.every(num => num % 2 === 0); \nconsole.log(allEven); // true",
     "description": "Returns `true` if all elements match the condition."
   },
   {
+    "id": 11,
     "title": "Array Methods - sort",
     "code": "const numbers = [3, 1, 4, 1, 5];\nnumbers.sort((a, b) => a - b);\nconsole.log(numbers); // [1, 1, 3, 4, 5]",
     "description": "Sorts elements based on a comparison function."
   },
   {
+    "id": 12,
     "title": "Array Methods - concat",
     "code": "const arr1 = [1, 2];\nconst arr2 = [3, 4];\nconst combined = arr1.concat(arr2); \nconsole.log(combined); // [1, 2, 3, 4]",
     "description": "Combines two or more arrays."
   },
   {
+    "id": 13,
     "title": "Destructuring",
     "code": "const person = { name: \"John\", age: 30 };\nconst { name, age } = person;\nconsole.log(name); // John",
     "description": null
   },
   {
+    "id": 14,
     "title": "Template Literals",
     "code": "const name = \"Jane\";\nconsole.log(`Hello, ${name}!`); // Output: Hello, Jane!",
     "description": null
   },
   {
+    "id": 15,
     "title": "Promises",
     "code": "const fetchData = () => new Promise((resolve) => resolve(\"Data!\"));\nfetchData().then(data => console.log(data)); // Data!",
     "description": null
   },
   {
+    "id": 16,
     "title": "Async/Await",
     "code": "const getData = async () => {\n  const data = await Promise.resolve(\"Hello\");\n  console.log(data);\n};\ngetData(); // Output: Hello",
     "description": null
   },
   {
+    "id": 17,
     "title": "Default Parameters",
     "code": "function greet(name = \"Guest\") {\n  return `Hello, ${name}!`;\n}\nconsole.log(greet()); // Hello, Guest!",
     "description": null
   },
   {
+    "id": 18,
     "title": "Spread Operator",
     "code": "const arr1 = [1, 2];\nconst arr2 = [...arr1, 3, 4];\nconsole.log(arr2); // [1, 2, 3, 4]",
     "description": null
   },
   {
+    "id": 19,
     "title": "Object Property Shorthand",
     "code": "const name = \"Alice\", age = 25;\nconst person = { name, age };\nconsole.log(person); // { name: \"Alice\", age: 25 }",
     "description": null

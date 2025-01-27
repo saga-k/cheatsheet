@@ -15,10 +15,7 @@ export default {
 
     titles: [],
 
-    selectedTitles:[],
-
-    selectedPrinciples:[]
-
+    selectedTitles:[]
 
     }
   },
@@ -29,9 +26,13 @@ export default {
 
   watch:{
     selectedTitles(newVal, oldVal){
-      if(newVal.length>oldVal.length){
-      let emit = this.findSame(newVal)
-      this.$emit('cardAdded', emit)
+
+      if(newVal.length > oldVal.length){
+        let added = this.findSame(newVal)
+        this.$emit('cardAdded', added)
+      } else if(oldVal.length > newVal.length){
+        let removed = this.findRemoved(newVal, oldVal)
+        this.$emit('cardRemoved', removed)
       }
     }
   },
@@ -46,42 +47,24 @@ export default {
 
     findSame(newVal){
 
-        for (let i = 0; i<this.localData.length; i++){
+      for (let i = 0; i<this.localData.length; i++){
 
-          let index = newVal.length-1
-          let dropdownTitle = newVal[index]
-          let objectTitle = this.localData[i].title
-          let object = this.localData[i]
+        let index = newVal.length-1
+        let dropdownTitle = newVal[index]
+        let objectTitle = this.localData[i].title
+        let object = this.localData[i]
 
-          if(objectTitle === dropdownTitle){
-            console.log('to emit', object)
-            return object
-          }
+        if(objectTitle === dropdownTitle){
+          return object
         }
-      },
-    /*
-    keepforlater(newVal){
-      let selected = []
-        for (let i = 0; i<this.localData.length; i++){
-
-            for (let j=0; j<newVal.length; j++){
-
-              let titleOne = this.localData[i].title
-              let titleTwo = newVal[j]
-
-                if(titleOne === titleTwo){
-                selected.push(this.localData[i])
-                }
-            }
-        }
-
-      this.selectedPrinciples = selected
-      console.log('to emit',this.selectedPrinciples)
+      }
     },
-    */
+
+    findRemoved(newVal, oldVal){
+      const removed = oldVal.filter(value => !newVal.includes(value));
+      return removed[0]
+    }
   }
-
-
 }
 
 </script>

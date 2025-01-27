@@ -47,10 +47,20 @@ methods:{
     this.isFetched = true
   },
 
-  updateCards(newValue){
-    console.log('updated', newValue)
-    this.cards.push(newValue)
+  addCard(added){
+    console.log('updated', added)
+    this.cards.push(added)
     console.log('cards', this.cards)
+  },
+
+  removeCard(removed){
+
+    let found = this.cards.find(value => value.title === removed)
+    console.log('found', found)
+    let index = this.cards.indexOf(found)
+    console.log(index)
+    this.cards.splice(index, 1)
+    console.log('this.cards:',this.cards)
   }
 }
 
@@ -60,8 +70,8 @@ methods:{
 <template>
 <h1>test</h1>
 <SizeInput @emitSize="updateCanvasSize"/>
-<MultiSelectDropdown @cardAdded="updateCards" v-if="isFetched" :data-prop="fetchedData"/>
+<MultiSelectDropdown @cardAdded="addCard" @cardRemoved="removeCard" v-if="isFetched" :data-prop="fetchedData"/>
 <MyCanvas :style="{height:canvasSize.height, width: canvasSize.width}"/>
-<myCard v-if="cards!==null" v-for="(card, index) in cards" key="index" :card-prop="card"/>
+<myCard v-if="cards!==null" v-for="card in cards"  :key="card.id" :card-prop="card"/>
 
 </template>
