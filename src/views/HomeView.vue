@@ -26,6 +26,8 @@ return{
     width: null
   },
 
+  canvasSet: false,
+
   cards:[]
 }
 },
@@ -38,6 +40,7 @@ methods:{
   updateCanvasSize(Size){
   this.canvasSize.height = `${Size.height}px`;
   this.canvasSize.width = `${Size.width}px`;
+  this.canvasSet = true
   },
 
   async fetchData(){
@@ -71,7 +74,8 @@ methods:{
 <h1>test</h1>
 <SizeInput @emitSize="updateCanvasSize"/>
 <MultiSelectDropdown @cardAdded="addCard" @cardRemoved="removeCard" v-if="isFetched" :data-prop="fetchedData"/>
-<MyCanvas :style="{height:canvasSize.height, width: canvasSize.width}"/>
-<myCard v-if="cards!==null" v-for="card in cards"  :key="card.id" :card-prop="card"/>
+<MyCanvas v-if="canvasSet===true" :style="{height:canvasSize.height, width: canvasSize.width}">
+  <myCard v-if="cards!==null" v-for="card in cards"  :key="card.id" :card-prop="card"/>
+</MyCanvas>
 
 </template>
