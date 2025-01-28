@@ -22,13 +22,11 @@ return{
   isFetched: false,
 
   canvasSize:{
-    height: null,
-    width: null,
+    width: 1440,
+    height: 900,
     scrollHeight: null,
     scrollWidth: null
   },
-
-  canvasSet: false,
 
   hasOverflow: false,
 
@@ -45,7 +43,6 @@ methods:{
   updateCanvasSize(Size){
   this.canvasSize.height = `${Size.height}`;
   this.canvasSize.width = `${Size.width}`;
-  this.canvasSet = true
   },
 
   async fetchData(){
@@ -94,7 +91,6 @@ v-if="isFetched"
 <p v-if="checkOverflow">Testing error</p>
 
 <MyCanvas
-v-if="canvasSet===true"
 :style="{height:canvasSize.height + 'px', width: canvasSize.width + 'px'}"
 ref="MyCanvas">
 
