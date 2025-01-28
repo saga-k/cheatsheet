@@ -22,19 +22,34 @@ export default {
 
 <template>
   <section>
-    <h2>{{cardTitle}}</h2>
+    <h3>{{cardTitle}}</h3>
     <p v-if="description!==null">{{ description }}</p>
-    <pre>
-  <code>
- {{ code }}
-  </code>
-</pre>
+    <div>
+    <pre><code>{{ code }}</code></pre>
+    </div>
+
   </section>
 </template>
 
 <style scoped>
+
 section{
-  border: solid black 1 px;
+  border: solid black 1px;
+  padding: 0.5rem;
+  height: fit-content;
 }
+
+p{
+  font-size: 14px;
+}
+code{
+  font-size: 14px;
+}
+
+div{
+  background-color: lightgray;
+  padding: 0.5rem;
+}
+
 
 </style>

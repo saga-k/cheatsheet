@@ -27,6 +27,14 @@ export default {
 <style scoped>
 section{
   border: solid 1px black;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  column-gap: 1rem;
+  row-gap: 1rem;
+
   overflow: hidden;
 }
 </style>
