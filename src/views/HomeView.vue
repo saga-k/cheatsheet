@@ -4,7 +4,7 @@ import SizeInput from "@/components/SizeInput.vue";
 import MultiSelectDropdown from "@/components/MultiSelectDropdown.vue";
 import myCard from "./myCard.vue";
 import draggable from "vuedraggable";
-import draggableComponent from "vuedraggable";
+import html2canvas from "html2canvas";
 
 export default {
   name: "HomeView",
@@ -90,6 +90,13 @@ export default {
         this.hasWindowOverflow = false;
       }
     },
+
+    downloadImage() {
+      console.log("something happened");
+      html2canvas(document.querySelector("#myCanvas")).then((canvas) => {
+        document.body.appendChild(canvas);
+      });
+    },
   },
 
   computed: {
@@ -114,6 +121,7 @@ export default {
       :data-prop="fetchedData"
     />
 
+    <button @click="downloadImage">Download</button>
     <p v-if="checkOverflow">Testing error</p>
 
     <MyCanvas
@@ -133,8 +141,6 @@ export default {
     </MyCanvas>
   </article>
 </template>
-
-<style></style>
 
 <style scoped>
 #fullLayout {

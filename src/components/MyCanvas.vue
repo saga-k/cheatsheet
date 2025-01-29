@@ -31,5 +31,6 @@ section {
   overflow: hidden;
   padding: 1rem;
   border-radius: 8px;
+  justify-content: center;
 }
 </style>
