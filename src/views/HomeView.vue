@@ -106,6 +106,7 @@ computed:{
 </script>
 
 <template>
+<article id="fullLayout">
 <h1>test</h1>
 <SizeInput @emitSize="updateCanvasSize"/>
 <MultiSelectDropdown
@@ -132,7 +133,7 @@ v-if="isFetched"
   :card-prop="card"/>
 
 </MyCanvas>
-
+</article>
 </template>
 
 <style scoped>
