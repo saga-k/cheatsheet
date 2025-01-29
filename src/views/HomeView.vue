@@ -28,15 +28,16 @@ return{
     scrollWidth: null
   },
 
-  hasOverflow: false,
-
   cards:[],
+
+  viewportWidth: window.innerWidth
 
 }
 },
 
 created(){
 this.fetchData()
+window.addEventListener('resize', this.updateViewportWidth)
 },
 
 methods:{
@@ -56,7 +57,7 @@ methods:{
     this.cards.push(added)
     this.canvasSize.scrollHeight = this.$refs.MyCanvas.$refs.canvasSection.scrollHeight
     this.canvasSize.scrollWidth = this.$refs.MyCanvas.$refs.canvasSection.scrollWidth
-    console.log('canvasSize', this.canvasSize)
+    //console.log('canvasSize', this.canvasSize)
   },
 
   removeCard(removed){
@@ -66,7 +67,12 @@ methods:{
     this.cards.splice(index, 1)
     this.canvasSize.scrollHeight = this.$refs.MyCanvas.$refs.canvasSection.scrollHeight
     this.canvasSize.scrollWidth = this.$refs.MyCanvas.$refs.canvasSection.scrollWidth
-    console.log('canvasSize', this.canvasSize)
+    //console.log('canvasSize', this.canvasSize)
+  },
+
+  updateViewportWidth(){
+    this.viewportWidth = window.innerWidth
+    console.log('viewportWidth',this.viewportWidth)
   }
 },
 computed:{
@@ -92,7 +98,8 @@ v-if="isFetched"
 
 <MyCanvas
 :style="{height:canvasSize.height + 'px', width: canvasSize.width + 'px'}"
-ref="MyCanvas">
+ref="MyCanvas"
+:class="{scaleDown:checkOverflow}">
 
   <myCard
   v-if="cards!==null"
@@ -103,3 +110,9 @@ ref="MyCanvas">
 </MyCanvas>
 
 </template>
+
+<style scoped>
+.scaleDown{
+  transform: scale(75%);
+}
+</style>
