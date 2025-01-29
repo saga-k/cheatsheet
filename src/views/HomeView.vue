@@ -34,13 +34,14 @@ return{
 
   hasWindowOverflow: true,
 
-  scalePercentage: null
+  scalePercentage: null,
 
 }
 },
 
 created(){
 this.fetchData()
+this.updateViewportWidth()
 window.addEventListener('resize', this.updateViewportWidth)
 },
 
@@ -119,9 +120,10 @@ v-if="isFetched"
 :style="{
   height:canvasSize.height + 'px',
   width: canvasSize.width + 'px',
+  transform: hasWindowOverflow ? `scale(${scalePercentage}%)` : 'none'
   }"
-ref="MyCanvas"
-:class="canvasSize.width > viewportWidth ? 'scaleDown':'resetScale'">
+  id="myCanvas"
+  ref="MyCanvas">
 
   <myCard
   v-if="cards!==null"
@@ -134,7 +136,7 @@ ref="MyCanvas"
 </template>
 
 <style scoped>
-.scaleDown{
+#myCanvas{
   transform-origin: top left;
 }
 </style>
