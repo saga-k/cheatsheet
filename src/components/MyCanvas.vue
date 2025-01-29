@@ -25,15 +25,9 @@ export default {
 
 <style scoped>
 section {
+  display: flex;
   background-color: white;
   border: solid 1px #c9c9c9;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: stretch;
-  column-gap: 1rem;
-  row-gap: 1rem;
   overflow: hidden;
   padding: 1rem;
   border-radius: 8px;

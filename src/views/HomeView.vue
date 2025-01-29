@@ -3,6 +3,8 @@ import MyCanvas from "@/components/MyCanvas.vue";
 import SizeInput from "@/components/SizeInput.vue";
 import MultiSelectDropdown from "@/components/MultiSelectDropdown.vue";
 import myCard from "./myCard.vue";
+import draggable from "vuedraggable";
+import draggableComponent from "vuedraggable";
 
 export default {
   name: "HomeView",
@@ -12,6 +14,7 @@ export default {
     MyCanvas,
     MultiSelectDropdown,
     myCard,
+    draggable,
   },
 
   data() {
@@ -122,12 +125,11 @@ export default {
       id="myCanvas"
       ref="MyCanvas"
     >
-      <myCard
-        v-if="cards !== null"
-        v-for="card in cards"
-        :key="card.id"
-        :card-prop="card"
-      />
+      <draggable id="draggable" v-model="cards" item-key="id">
+        <template #item="{ element: card }">
+          <myCard :card-prop="card" />
+        </template>
+      </draggable>
     </MyCanvas>
   </article>
 </template>
@@ -145,5 +147,15 @@ export default {
 #myCanvas {
   transform-origin: top left;
   margin: auto;
+}
+
+#draggable {
+  display: flex !important;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  column-gap: 1rem;
+  row-gap: 1rem;
 }
 </style>
