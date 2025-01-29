@@ -30,7 +30,11 @@ return{
 
   cards:[],
 
-  viewportWidth: window.innerWidth
+  viewportWidth: window.innerWidth,
+
+  hasWindowOverflow: true,
+
+  scalePercentage: null
 
 }
 },
@@ -72,9 +76,24 @@ methods:{
 
   updateViewportWidth(){
     this.viewportWidth = window.innerWidth
-    console.log('viewportWidth',this.viewportWidth)
+    this.calculateScale()
+  },
+
+  calculateScale(){
+    let percentage = (this.viewportWidth/this.canvasSize.width)*100
+    this.scalePercentage = Math.floor(percentage)
+
+    if(percentage < 100){
+      this.hasWindowOverflow = true
+    } else {
+      this.hasWindowOverflow = false
+    }
+
+    console.log('wibdowoverflow', this.hasWindowOverflow)
+    console.log('percentage', this.scalePercentage)
   }
 },
+
 computed:{
   checkOverflow(){
     return this.canvasSize.scrollWidth > Number(this.canvasSize.width) ||
@@ -97,9 +116,12 @@ v-if="isFetched"
 <p v-if="checkOverflow">Testing error</p>
 
 <MyCanvas
-:style="{height:canvasSize.height + 'px', width: canvasSize.width + 'px'}"
+:style="{
+  height:canvasSize.height + 'px',
+  width: canvasSize.width + 'px',
+  }"
 ref="MyCanvas"
-:class="{scaleDown:checkOverflow}">
+:class="canvasSize.width > viewportWidth ? 'scaleDown':'resetScale'">
 
   <myCard
   v-if="cards!==null"
@@ -113,6 +135,6 @@ ref="MyCanvas"
 
 <style scoped>
 .scaleDown{
-  transform: scale(75%);
+  transform-origin: top left;
 }
 </style>
