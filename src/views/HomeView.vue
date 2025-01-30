@@ -2,7 +2,7 @@
 import MyCanvas from "@/components/MyCanvas.vue";
 import SizeInput from "@/components/SizeInput.vue";
 import MultiSelectDropdown from "@/components/MultiSelectDropdown.vue";
-import myCard from "./myCard.vue";
+import myCard from "@/components/myCard.vue";
 import draggable from "vuedraggable";
 import html2canvas from "html2canvas";
 import JsFileDownloader from "js-file-downloader";
@@ -51,6 +51,7 @@ export default {
     updateCanvasSize(Size) {
       this.canvasSize.height = `${Size.height}`;
       this.canvasSize.width = `${Size.width}`;
+      this.updateViewportWidth();
     },
 
     async fetchData() {
@@ -64,7 +65,6 @@ export default {
       this.cards.push(added);
       this.canvasSize.scrollHeight = this.$refs.MyCanvas.$refs.canvasSection.scrollHeight;
       this.canvasSize.scrollWidth = this.$refs.MyCanvas.$refs.canvasSection.scrollWidth;
-      //console.log('canvasSize', this.canvasSize)
     },
 
     removeCard(removed) {
@@ -73,7 +73,6 @@ export default {
       this.cards.splice(index, 1);
       this.canvasSize.scrollHeight = this.$refs.MyCanvas.$refs.canvasSection.scrollHeight;
       this.canvasSize.scrollWidth = this.$refs.MyCanvas.$refs.canvasSection.scrollWidth;
-      //console.log('canvasSize', this.canvasSize)
     },
 
     updateViewportWidth() {
@@ -120,14 +119,16 @@ export default {
 
 <template>
   <article id="fullLayout">
-    <h1>test</h1>
-    <SizeInput @emitSize="updateCanvasSize" />
-    <MultiSelectDropdown
-      @cardAdded="addCard"
-      @cardRemoved="removeCard"
-      v-if="isFetched"
-      :data-prop="fetchedData"
-    />
+    <div id="options-header">
+      <h1>Create a front end cheat sheet</h1>
+      <SizeInput @emitSize="updateCanvasSize" />
+      <MultiSelectDropdown
+        @cardAdded="addCard"
+        @cardRemoved="removeCard"
+        v-if="isFetched"
+        :data-prop="fetchedData"
+      />
+    </div>
 
     <button @click="createImage">Download</button>
     <p v-if="checkOverflow">Testing error</p>
@@ -152,10 +153,19 @@ export default {
 
 <style scoped>
 #fullLayout {
-  height: 100vh;
-  padding-left: 20px;
-  padding-right: 20px;
-  background-color: #eff3f6;
+  height: 100%;
+  padding: 20px;
+  padding-bottom: 60px;
+}
+
+#options-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+h1 {
+  line-height: 1em;
 }
 
 #myCanvas {

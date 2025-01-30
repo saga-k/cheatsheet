@@ -32,10 +32,15 @@ export default {
 
 <template>
   <div id="wrapper">
-    <input v-model="width" id="input-width" type="number" />
-    <input v-model="height" id="input-height" type="number" />
+    <div class="vertical-flex">
+      <label for="input-width">Set Width</label>
+      <input v-model="width" id="input-width" type="number" />
+    </div>
+    <div class="vertical-flex">
+      <label for="input-height">Set Height</label>
+      <input v-model="height" id="input-height" type="number" />
+    </div>
     <button @click="onClick">Set Dimensions</button>
-    <div class="block shadow"></div>
   </div>
 </template>
 
@@ -43,6 +48,16 @@ export default {
 #wrapper {
   display: flex;
   gap: 1rem;
+  align-items: flex-end;
+}
+
+.vertical-flex {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 14px;
 }
 
 input {
@@ -55,8 +70,11 @@ input {
 button {
   background-color: lightgrey;
   width: fit-content;
-  padding: 0.3rem 1rem;
+  height: min-content;
+  padding: 0rem 1rem;
   border-radius: 3px;
   font-size: 14px;
+  height: 36px;
+  text-wrap: nowrap;
 }
 </style>
