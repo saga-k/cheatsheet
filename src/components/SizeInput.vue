@@ -66,15 +66,4 @@ input {
   border-radius: 3px;
   padding: 0.3rem;
 }
-
-button {
-  background-color: lightgrey;
-  width: fit-content;
-  height: min-content;
-  padding: 0rem 1rem;
-  border-radius: 3px;
-  font-size: 14px;
-  height: 36px;
-  text-wrap: nowrap;
-}
 </style>

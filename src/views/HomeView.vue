@@ -121,7 +121,10 @@ export default {
   <article id="fullLayout">
     <div id="options-header">
       <h1>Create a front end cheat sheet</h1>
-      <SizeInput @emitSize="updateCanvasSize" />
+      <div id="firstRow">
+        <SizeInput @emitSize="updateCanvasSize" />
+        <button @click="createImage">Download image</button>
+      </div>
       <MultiSelectDropdown
         @cardAdded="addCard"
         @cardRemoved="removeCard"
@@ -130,7 +133,6 @@ export default {
       />
     </div>
 
-    <button @click="createImage">Download</button>
     <p v-if="checkOverflow">Testing error</p>
 
     <MyCanvas
@@ -168,6 +170,12 @@ h1 {
   line-height: 1em;
 }
 
+#firstRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
 #myCanvas {
   transform-origin: top left;
   margin: auto;
@@ -181,5 +189,22 @@ h1 {
   align-items: stretch;
   column-gap: 1rem;
   row-gap: 1rem;
+}
+
+button {
+  height: ;
+}
+</style>
+
+<style>
+button {
+  background-color: lightgrey;
+  width: fit-content;
+  height: min-content;
+  padding: 0rem 1rem;
+  border-radius: 3px;
+  font-size: 14px;
+  height: 36px;
+  text-wrap: nowrap;
 }
 </style>
