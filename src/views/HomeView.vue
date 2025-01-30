@@ -133,7 +133,10 @@ export default {
       />
     </div>
 
-    <p v-if="checkOverflow">Testing error</p>
+    <section id="error" v-if="checkOverflow">
+      <h4>Overflow detected</h4>
+      <p>Rearrange cards, remove cards or edit canvas dimensions.</p>
+    </section>
 
     <MyCanvas
       :style="{
@@ -191,12 +194,6 @@ h1 {
   row-gap: 1rem;
 }
 
-button {
-  height: ;
-}
-</style>
-
-<style>
 button {
   background-color: lightgrey;
   width: fit-content;
