@@ -42,7 +42,48 @@
       "title": "Logical Operators",
       "code": "console.log(5 > 3 && 8 > 4);  // true (AND)\nconsole.log(5 > 3 || 2 > 4);  // true (OR)\nconsole.log(!(5 > 3));  // false (NOT)",
       "description": "Used to combine multiple conditions."
+    },
+    {
+      "id": 8,
+      "title": "Assignment Operators",
+      "code": "let x = 5;  // Assigns 5 to x\nx = 10;  // Reassigns 10 to x (previous value is overwritten)\nx += 3;  // Adds 3 to x (x = x + 3)\nx -= 2;  // Subtracts 2 from x (x = x - 2)\nx *= 4;  // Multiplies x by 4 (x = x * 4)\nx /= 2;  // Divides x by 2 (x = x / 2)\nx %= 3;  // Modulus: x = x % 3\nx **= 2;  // Raises x to the power of 2 (x = x ** 2)",
+      "description": "Used to assign values to variables, perform operations on them, and reassign values."
+    },
+    {
+      "id": 9,
+      "title": "Conditional (Ternary) Operator",
+      "code": "const age = 18;\nconst canVote = (age >= 18) ? 'Yes' : 'No';\nconsole.log(canVote);  // Output: 'Yes'",
+      "description": "A shorthand for 'if-else' statements, used for conditional assignments."
+    },
+    {
+      "id": 10,
+      "title": "Typeof Operator",
+      "code": "const name = 'Alice';\nconsole.log(typeof name);  // Output: 'string'\nconst age = 25;\nconsole.log(typeof age);  // Output: 'number'",
+      "description": "Used to check the type of a variable or value."
+    },
+    {
+      "id": 11,
+      "title": "Instanceof Operator",
+      "code": "const date = new Date();\nconsole.log(date instanceof Date);  // Output: true\nconsole.log(date instanceof Object);  // Output: true\nconsole.log(date instanceof Array);  // Output: false",
+      "description": "Checks whether an object is an instance of a specific class or constructor function."
+    },
+    {
+      "id": 12,
+      "title": "Destructuring Assignment",
+      "code": "const person = { name: 'Alice', age: 25 };\nconst { name, age } = person;\nconsole.log(name);  // Output: 'Alice'\nconsole.log(age);   // Output: 25",
+      "description": "Extracts values from objects or arrays and assigns them to variables."
     }
+
+
+
+
+
+
+
+
+
+
+
 
 
 ]
