@@ -5,6 +5,7 @@ import MultiSelectDropdown from "@/components/MultiSelectDropdown.vue";
 import myCard from "./myCard.vue";
 import draggable from "vuedraggable";
 import html2canvas from "html2canvas";
+import JsFileDownloader from "js-file-downloader";
 
 export default {
   name: "HomeView",
@@ -91,10 +92,17 @@ export default {
       }
     },
 
-    downloadImage() {
+    createImage() {
       console.log("something happened");
       html2canvas(document.querySelector("#myCanvas")).then((canvas) => {
-        document.body.appendChild(canvas);
+        const dataUrl = canvas.toDataURL("image/png");
+
+        new JsFileDownloader({
+          url: dataUrl,
+          filename: "myCheatSheet.png",
+        }).catch((error) => {
+          console.error("Download failed", error);
+        });
       });
     },
   },
@@ -121,7 +129,7 @@ export default {
       :data-prop="fetchedData"
     />
 
-    <button @click="downloadImage">Download</button>
+    <button @click="createImage">Download</button>
     <p v-if="checkOverflow">Testing error</p>
 
     <MyCanvas
