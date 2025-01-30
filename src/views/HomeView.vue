@@ -204,4 +204,21 @@ button {
   height: 36px;
   text-wrap: nowrap;
 }
+
+#error {
+  background-color: #ffe7e7;
+  border: 1px solid #f02626;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#error p,
+#error h4 {
+  color: #f02626;
+  line-height: 2em;
+}
 </style>

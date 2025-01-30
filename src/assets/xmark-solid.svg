@@ -1,1 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path fill="#323232" d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 384 512">
+  <!-- Generator: Adobe Illustrator 29.2.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 116)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #323232;
+      }
+    </style>
+  </defs>
+  <path class="st0" d="M192,61C86.5,61,1,146.5,1,252s85.5,191,191,191,191-85.5,191-191S297.5,61,192,61ZM288,348c-8,8-20.9,8-28.9,0l-67.2-67.1-67.1,67.2c-8,8-20.9,8-28.9,0s-8-20.9,0-28.9l67.1-67.2-67.2-67.1c-8-8-8-20.9,0-28.9s20.9-8,28.9,0l67.2,67.1,67.1-67.2c8-8,20.9-8,28.9,0s8,20.9,0,28.9l-67.1,67.2,67.2,67.1c8,8,8,20.9,0,28.9Z"/>
+</svg>
