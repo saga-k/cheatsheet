@@ -72,16 +72,25 @@
       "title": "Destructuring Assignment",
       "code": "const person = { name: 'Alice', age: 25 };\nconst { name, age } = person;\nconsole.log(name);  // Output: 'Alice'\nconsole.log(age);   // Output: 25",
       "description": "Extracts values from objects or arrays and assigns them to variables."
+    },
+    {
+      "id": 13,
+      "title": "Spread Operator",
+      "code": "const arr1 = [1, 2, 3];\nconst arr2 = [...arr1, 4, 5];\nconsole.log(arr2);  // Output: [1, 2, 3, 4, 5]\nconst person = { name: 'Alice', age: 25 };\nconst newPerson = { ...person, city: 'New York' };\nconsole.log(newPerson);  // Output: { name: 'Alice', age: 25, city: 'New York' }",
+      "description": "Allows iterables (like arrays or objects) to be expanded into individual elements."
+    },
+    {
+      "id": 14,
+      "title": "Rest Parameters",
+      "code": "function sum(...numbers) {\n  return numbers.reduce((total, num) => total + num, 0);\n}\nconsole.log(sum(1, 2, 3, 4));  // Output: 10",
+      "description": "Collects all remaining arguments into an array."
+    },
+    {
+      "id": 15,
+      "title": "Default Parameters",
+      "code": "function greet(name = 'Guest') {\n  return `Hello, ${name}!`;\n}\nconsole.log(greet());       // Output: 'Hello, Guest!'\nconsole.log(greet('Alice'));  // Output: 'Hello, Alice!'",
+      "description": "Allows functions to have default values for parameters if no value is passed."
     }
-
-
-
-
-
-
-
-
-
 
 
 
