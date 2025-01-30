@@ -69,9 +69,9 @@
     },
     {
       "id": 12,
-      "title": "Destructuring Assignment",
+      "title": "Destructuring Assignment (Object)",
       "code": "const person = { name: 'Alice', age: 25 };\nconst { name, age } = person;\nconsole.log(name);  // Output: 'Alice'\nconsole.log(age);   // Output: 25",
-      "description": "Extracts values from objects or arrays and assigns them to variables."
+      "description": "Extracts values from objects and assigns them to variables."
     },
     {
       "id": 13,
@@ -90,7 +90,51 @@
       "title": "Default Parameters",
       "code": "function greet(name = 'Guest') {\n  return `Hello, ${name}!`;\n}\nconsole.log(greet());       // Output: 'Hello, Guest!'\nconsole.log(greet('Alice'));  // Output: 'Hello, Alice!'",
       "description": "Allows functions to have default values for parameters if no value is passed."
+    },
+    {
+      "id": 16,
+      "title": "Template Literals",
+      "code": "const name = 'Bob';\nconst greeting = `Hello, ${name}!`;\nconsole.log(greeting);  // Output: 'Hello, Bob!'",
+      "description": "Provides a way to embed expressions inside string literals using `${ }`."
+    },
+    {
+      "id": 17,
+      "title": "Destructuring Assignment (Array)",
+      "code": "const arr = [1, 2, 3];\nconst [a, b] = arr;\nconsole.log(a);  // Output: 1\nconsole.log(b);  // Output: 2",
+      "description": "Extracts values from arrays and assigns them to variables."
+    },
+
+    {
+      "id": 18,
+      "title": "Function Expressions",
+      "code": "const greet = function(name) {\n  return `Hello, ${name}!`;\n};\nconsole.log(greet('Alice'));  // Output: 'Hello, Alice!'",
+      "description": "A function that is defined and assigned to a variable."
+    },
+    {
+      "id": 19,
+      "title": "Arrow Functions",
+      "code": "const greet = (name) => `Hello, ${name}!`;\nconsole.log(greet('Alice'));  // Output: 'Hello, Alice!'",
+      "description": "A concise way to write functions with an implicit return."
+    },
+    {
+      "id": 20,
+      "title": "For Loop",
+      "code": "for (let i = 0; i < 5; i++) {\n  console.log(i); // Output: 0, 1, 2, 3, 4\n}",
+      "description": "Repeats a block of code a set number of times based on a condition."
+    },
+    {
+      "id": 21,
+      "title": "While Loop",
+      "code": "let i = 0;\nwhile (i < 5) {\n  console.log(i); // Output: 0, 1, 2, 3, 4\n  i++;\n}",
+      "description": "Repeats a block of code as long as a specified condition is true."
+    },
+    {
+      "id": 22,
+      "title": "forEach (Array Method)",
+      "code": "const arr = [1, 2, 3];\narr.forEach(num => console.log(num)); // Output: 1, 2, 3",
+      "description": "Executes a provided function once for each array element."
     }
+
 
 
 
