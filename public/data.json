@@ -196,55 +196,55 @@
     },
     {
       "id": 33,
-      "title": "Array.prototype.find()",
+      "title": "Array.find()",
       "code": "const numbers = [1, 2, 3, 4, 5];\nconst firstEven = numbers.find(num => num % 2 === 0);\nconsole.log(firstEven); // Output: 2",
       "description": "Returns the first element that satisfies the test."
     },
     {
       "id": 34,
-      "title": "Array.prototype.some()",
+      "title": "Array.some()",
       "code": "const numbers = [1, 2, 3, 4];\nconst hasEven = numbers.some(num => num % 2 === 0);\nconsole.log(hasEven); // Output: true",
       "description": "Checks if at least one element passes the test."
     },
     {
       "id": 35,
-      "title": "Array.prototype.every()",
+      "title": "Array.every()",
       "code": "const numbers = [2, 4, 6];\nconst allEven = numbers.every(num => num % 2 === 0);\nconsole.log(allEven); // Output: true",
       "description": "Checks if all elements pass the test."
     },
     {
       "id": 36,
-      "title": "Array.prototype.push()",
+      "title": "Array.push()",
       "code": "const numbers = [1, 2, 3];\nnumbers.push(4);\nconsole.log(numbers); // Output: [1, 2, 3, 4]",
       "description": "Adds one or more elements to the end of an array."
     },
     {
       "id": 37,
-      "title": "Array.prototype.pop()",
+      "title": "Array.pop()",
       "code": "const numbers = [1, 2, 3, 4];\nconst last = numbers.pop();\nconsole.log(last); // Output: 4\nconsole.log(numbers); // Output: [1, 2, 3]",
       "description": "Removes the last element from an array."
     },
     {
       "id": 38,
-      "title": "Array.prototype.shift()",
+      "title": "Array.shift()",
       "code": "const numbers = [1, 2, 3];\nconst first = numbers.shift();\nconsole.log(first); // Output: 1\nconsole.log(numbers); // Output: [2, 3]",
       "description": "Removes the first element from an array."
     },
     {
       "id": 39,
-      "title": "Array.prototype.unshift()",
+      "title": "Array.unshift()",
       "code": "const numbers = [2, 3, 4];\nnumbers.unshift(1);\nconsole.log(numbers); // Output: [1, 2, 3, 4]",
       "description": "Adds one or more elements to the beginning of an array."
     },
     {
       "id": 40,
-      "title": "Array.prototype.splice()",
+      "title": "Array.splice()",
       "code": "const numbers = [1, 2, 3, 4];\nnumbers.splice(2, 1, 5);\nconsole.log(numbers); // Output: [1, 2, 5, 4]",
       "description": "Adds or removes elements at a specific index."
     },
     {
       "id": 41,
-      "title": "Array.prototype.reverse()",
+      "title": "Array.reverse()",
       "code": "const numbers = [1, 2, 3];\nnumbers.reverse();\nconsole.log(numbers); // Output: [3, 2, 1]",
       "description": "Reverses the order of the elements in an array."
     },
@@ -261,30 +261,50 @@
         "code": "const obj = { name: 'John', age: 30 };\nconst name = obj.name;\nconsole.log(name); // Output: 'John'",
         "description": "Accesses a property of an object using dot notation."
       },
+
       {
         "id": 44,
-        "title": "Accessing Object Property with Bracket Notation",
-        "code": "const obj = { name: 'John', age: 30 };\nconst age = obj['age'];\nconsole.log(age); // Output: 30",
-        "description": "Accesses a property of an object using bracket notation."
-      },
-      {
-        "id": 45,
         "title": "Accessing Nested Object Property",
         "code": "const person = { name: 'John', address: { city: 'New York' } };\nconst city = person.address.city;\nconsole.log(city); // Output: 'New York'",
         "description": "Accesses a nested property inside an object."
       },
       {
-        "id": 46,
+        "id": 45,
         "title": "Accessing Array of Objects",
         "code": "const users = [{ name: 'John' }, { name: 'Jane' }];\nconst userName = users[1].name;\nconsole.log(userName); // Output: 'Jane'",
         "description": "Accesses a property of an object within an array."
       },
+
+      {
+        "id": 46,
+        "title": "Checking if an Array Includes a Value",
+        "code": "const arr = [1, 2, 3, 4];\nconsole.log(arr.includes(2)); // Output: true",
+        "description": "Checks if an array contains a value."
+      },
+
       {
         "id": 47,
-        "title": "Finding an Item in an Array (Array.find())",
-        "code": "const arr = [{ id: 1, name: 'John' }, { id: 2, name: 'Jane' }];\nconst user = arr.find(item => item.id === 2);\nconsole.log(user); // Output: { id: 2, name: 'Jane' }",
-        "description": "Finds the first item in an array that matches a condition."
+        "title": "Promises & Chaining",
+        "code": "fetch(\"https://api.example.com/data\")\n  .then(response => response.json())\n  .then(data => console.log(data))\n  .catch(error => console.error(error));",
+        "description": "Handles async operations with \".then()\" chaining and \".catch()\" for errors."
+      },
+      {
+        "id": 48,
+        "title": "JavaScript Classes",
+        "code": "class Person {\n  constructor(name, age) {\n    this.name = name;\n    this.age = age;\n  }\n  greet() {\n    return `Hello, my name is ${this.name}.`;\n  }\n}\n\nconst person1 = new Person('Alice', 30);\nconsole.log(person1.greet()); // Output: Hello, my name is Alice.",
+        "description": "Defines a class with a constructor and a method."
+      },
+
+      {
+        "id": 49,
+        "title": "Class Inheritance",
+        "code": "class Animal {\n  constructor(name) {\n    this.name = name;\n  }\n  makeSound() {\n    return 'Some generic sound';\n  }\n}\n\nclass Dog extends Animal {\n  makeSound() {\n    return 'Woof!';\n  }\n}\n\nconst dog = new Dog('Buddy');\nconsole.log(dog.makeSound()); // Output: Woof!",
+        "description": "A class can inherit from another class and override methods."
       }
+
+
+
+
 
 
     ]
