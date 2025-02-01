@@ -14,14 +14,23 @@ export default {
       cardTitle: this.cardProp.title,
       code: this.cardProp.code,
       description: this.cardProp.description,
+      colorPicker: false,
     };
+  },
+
+  methods: {
+    openColorPicker() {
+      this.colorPicker = true;
+    },
   },
 };
 </script>
 
 <template>
   <section>
+    <v-color-picker z-index="1"></v-color-picker>
     <h3>{{ cardTitle }}</h3>
+    <div style="height: 20px; width: 20px" @click="openColorPicker"></div>
     <p v-if="description !== null">{{ description }}</p>
     <div>
       <pre><code>{{ code }}</code></pre>
