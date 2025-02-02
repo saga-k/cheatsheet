@@ -118,6 +118,7 @@ export default {
 </script>
 
 <template>
+
   <article id="fullLayout">
     <div id="options-header">
       <h1>Create a front end cheat sheet</h1>
@@ -125,12 +126,7 @@ export default {
         <SizeInput @emitSize="updateCanvasSize" />
         <button @click="createImage">Download image</button>
       </div>
-      <MultiSelectDropdown
-        @cardAdded="addCard"
-        @cardRemoved="removeCard"
-        v-if="isFetched"
-        :data-prop="fetchedData"
-      />
+      <MultiSelectDropdown @cardAdded="addCard" @cardRemoved="removeCard" v-if="isFetched" :data-prop="fetchedData" />
     </div>
 
     <section id="error" v-if="checkOverflow">
@@ -138,15 +134,11 @@ export default {
       <p>Rearrange cards, remove cards or edit canvas dimensions.</p>
     </section>
 
-    <MyCanvas
-      :style="{
-        height: canvasSize.height + 'px',
-        width: canvasSize.width + 'px',
-        transform: hasWindowOverflow ? `scale(${scalePercentage}%)` : 'none',
-      }"
-      id="myCanvas"
-      ref="MyCanvas"
-    >
+    <MyCanvas :style="{
+      height: canvasSize.height + 'px',
+      width: canvasSize.width + 'px',
+      transform: hasWindowOverflow ? `scale(${scalePercentage}%)` : 'none',
+    }" id="myCanvas" ref="MyCanvas">
       <draggable id="draggable" v-model="cards" item-key="id">
         <template #item="{ element: card }">
           <myCard :card-prop="card" />
@@ -157,10 +149,18 @@ export default {
 </template>
 
 <style scoped>
+
 #fullLayout {
   height: 100%;
   padding: 20px;
   padding-bottom: 60px;
+  position: relative;
+  z-index: 0;
+}
+
+#overlay {
+  position: absolute;
+  z-index: 1;
 }
 
 #options-header {

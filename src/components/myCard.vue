@@ -28,13 +28,17 @@ export default {
 
 <template>
   <section>
-    <v-color-picker z-index="1"></v-color-picker>
+    <div id="overlay">
+  <v-color-picker class="colorPicker"></v-color-picker>
+</div>
+<div id="layout">
     <h3>{{ cardTitle }}</h3>
     <div style="height: 20px; width: 20px" @click="openColorPicker"></div>
     <p v-if="description !== null">{{ description }}</p>
-    <div>
+    <div id="codeBlock">
       <pre><code>{{ code }}</code></pre>
     </div>
+  </div>
   </section>
 </template>
 
@@ -53,14 +57,20 @@ section {
 p {
   font-size: 14px;
 }
+
 code {
   font-size: 14px;
 }
 
-div {
+#codeBlock {
   background-color: white;
   padding: 0.5rem;
   border-radius: 5px;
   border: solid 1px #c9c9c9;
+}
+
+#overlay{
+  position: absolute;
+  z-index: 1;
 }
 </style>
