@@ -15,30 +15,51 @@ export default {
       code: this.cardProp.code,
       description: this.cardProp.description,
       colorPicker: false,
+      selectedColor: null //Todo: read docs
     };
   },
 
   methods: {
     openColorPicker() {
-      this.colorPicker = true;
-    },
+      if(this.colorPicker === false){
+      this.colorPicker = true;} 
+      else {
+        this.colorPicker = false
+      }
+    }
   },
+
+  watch:{
+    backgroundColor(newVal, oldVal){
+      console.log('newval', newVal);
+      console.log('oldval', oldVal)
+    }
+  }
 };
 </script>
 
 <template>
   <section>
+
     <div id="overlay">
-  <v-color-picker class="colorPicker"></v-color-picker>
-</div>
-<div id="layout">
-    <h3>{{ cardTitle }}</h3>
-    <div style="height: 20px; width: 20px" @click="openColorPicker"></div>
-    <p v-if="description !== null">{{ description }}</p>
-    <div id="codeBlock">
-      <pre><code>{{ code }}</code></pre>
+      <v-color-picker 
+      v-if="colorPicker === true" 
+      class="colorPicker"
+      v-bind="selectedColor" ><!--Todo: read docs-->
+      >
+      </v-color-picker>
     </div>
-  </div>
+
+    <div id="layout">
+      <div id="firstRow">
+        <h3>{{ cardTitle }}</h3>
+        <button class="colorButton" @click="openColorPicker"><!--Add icon here--></button>
+      </div>
+        <p v-if="description !== null">{{ description }}</p>
+      <div id="codeBlock">
+        <pre><code>{{ code }}</code></pre>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -50,7 +71,7 @@ section {
   height: fit-content;
   border-radius: 5px;
   display: flex;
-  flex-direction: column;
+  justify-content: flex-end;
   gap: 0.2rem;
 }
 
@@ -70,7 +91,24 @@ code {
 }
 
 #overlay{
-  position: absolute;
+  position:absolute;
+  margin-top: 2rem;
   z-index: 1;
+}
+
+#layout{
+  flex-grow: 1;
+}
+
+.colorButton{
+  height: 20px;
+  width: 20px;
+  background-color: black;
+}
+
+#firstRow{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 </style>
