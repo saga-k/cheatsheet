@@ -27,36 +27,27 @@ export default {
   },
 
   methods: {
-    openBgColorPicker() {
+    toggleBgColorPicker() {
       if(this.bgColorPicker === false){
       this.bgColorPicker = true;} 
       else {
         this.bgColorPicker = false
       }
-      if(this.borderColorPicker === true){
-        this.borderColorPicker = false
-      }
     },
 
-    openBorderColorPicker() {
+    toggleBorderColorPicker() {
       if(this.borderColorPicker === false){
       this.borderColorPicker = true;} 
       else {
         this.borderColorPicker = false
       }
-      if(this.bgColorPicker === true){
-        this.bgColorPicker = false
-      }
     },
 
-    openTextColorPicker() {
+    toggleTextColorPicker() {
       if(this.textColorPicker === false){
       this.textColorPicker = true;} 
       else {
         this.textColorPicker = false
-      }
-      if(this.bgColorPicker === true){
-        this.bgColorPicker = false
       }
     }
   }
@@ -85,9 +76,12 @@ export default {
       </v-color-picker>
     </div>
 
-    <div class="overlay">
+    <div class="overlay"
+    v-if="borderColorPicker === true" >
+      <div class="colorPickerTitle">
+        <h4>Select Border Color</h4>
+      </div>
       <v-color-picker 
-      v-if="borderColorPicker === true" 
       id="borderColorPicker"
       v-model="selectedBorderColor" 
       mode="hsl"
@@ -95,9 +89,12 @@ export default {
       </v-color-picker>
     </div>
 
-    <div class="overlay">
+    <div class="overlay"
+    v-if="textColorPicker === true" >
+      <div class="colorPickerTitle">
+        <h4>Select Text Color</h4>
+      </div>
       <v-color-picker 
-      v-if="textColorPicker === true" 
       id="textColorPicker"
       v-model="selectedTextColor" 
       mode="hsl"
@@ -107,22 +104,40 @@ export default {
 
     <div id="layout">
       <div id="firstRow">
-          <h3>{{ cardTitle }}</h3>
+          <h3 :style="{'color': selectedTextColor || 'black'}">{{ cardTitle }}</h3>
 
           <div id="icons">
-          <button id="bgColorButton" class="colorButton" @click="openBgColorPicker">
+          <button id="bgColorButton"
+          class="colorButton"
+          @focusin="toggleBgColorPicker"
+          @focusout="toggleBgColorPicker"
+          >
             <!--add icon here-->
           </button>
-          <button id="borderColorButton" class="colorButton" @click="openBorderColorPicker">
+
+          <button id="borderColorButton" 
+          class="colorButton" 
+          @focusin="toggleBorderColorPicker"
+          @focusout="toggleBorderColorPicker"
+          >
           <!--add icon here-->
         </button>
-        <button id="textColorButton" class="colorButton" @click="openTextColorPicker">
+        
+        <button 
+        id="textColorButton" 
+        class="colorButton" 
+        @focusin="toggleTextColorPicker"
+        @focusout="toggleTextColorPicker"
+        >
           <!--add icon here-->
         </button>
       </div>
 
       </div>
-        <p v-if="description !== null">{{ description }}</p>
+        <p 
+        v-if="description !== null"
+        :style="{'color': selectedTextColor || 'black'}"
+        >{{ description }}</p>
       <div 
       id="codeBlock"
       :style="{'border-color': selectedBorderColor}"
