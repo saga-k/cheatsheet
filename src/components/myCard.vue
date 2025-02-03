@@ -2,6 +2,10 @@
 export default {
   name: "myCard",
 
+  created() {
+    window.addEventListener("keydown", this.onEsc);
+  },
+
   props: {
     cardProp: {
       type: Object,
@@ -31,7 +35,13 @@ export default {
       if(this.bgColorPicker === false){
       this.bgColorPicker = true;} 
       else {
-        this.bgColorPicker = false
+        this.bgColorPicker = false;
+      }
+      if(this.borderColorPicker){
+        this.borderColorPicker = false
+      }
+      if(this.textColorPicker){
+        this.textColorPicker = false
       }
     },
 
@@ -41,6 +51,12 @@ export default {
       else {
         this.borderColorPicker = false
       }
+      if(this.bgColorPicker){
+        this.bgColorPicker = false
+      }
+      if(this.textColorPicker){
+        this.textColorPicker = false
+      }
     },
 
     toggleTextColorPicker() {
@@ -48,6 +64,20 @@ export default {
       this.textColorPicker = true;} 
       else {
         this.textColorPicker = false
+      }
+      if(this.bgColorPicker){
+        this.bgColorPicker = false
+      }
+      if(this.borderColorPicker){
+        this.borderColorPicker = false
+      }
+    },
+
+    onEsc(event){
+      if(event.key === 'Escape'){
+        this.textColorPicker = false
+        this.bgColorPicker = false
+        this.borderColorPicker = false
       }
     }
   }
@@ -70,7 +100,7 @@ export default {
       <v-color-picker  
       id="bgColorPicker"
       v-model="selectedBackgroundColor" 
-      mode="hsl"
+      mode="hex"
       elevation="0"
       >
       </v-color-picker>
@@ -84,7 +114,8 @@ export default {
       <v-color-picker 
       id="borderColorPicker"
       v-model="selectedBorderColor" 
-      mode="hsl"
+      mode="hex"
+      elevation="0"
       >
       </v-color-picker>
     </div>
@@ -97,7 +128,8 @@ export default {
       <v-color-picker 
       id="textColorPicker"
       v-model="selectedTextColor" 
-      mode="hsl"
+      mode="hex"
+      elevation="0"
       >
       </v-color-picker>
     </div>
@@ -109,25 +141,33 @@ export default {
           <div id="icons">
           <button id="bgColorButton"
           class="colorButton"
-          @focusin="toggleBgColorPicker"
-          @focusout="toggleBgColorPicker"
+          @click="toggleBgColorPicker"
           >
           <font-awesome-icon id="fillIcon" :icon="['fas', 'palette']" />
           </button>
 
           <button id="borderColorButton" 
           class="colorButton" 
-          @focusin="toggleBorderColorPicker"
-          @focusout="toggleBorderColorPicker"
+          @click="toggleBorderColorPicker"
           >
-          <font-awesome-icon id="borderIcon" :icon="['fas', 'palette']" />
+          <font-awesome-icon 
+          v-if="borderColorPicker === false"
+          id="borderIcon" 
+          :icon="['fas', 'palette']" 
+          />
+
+          <font-awesome-icon 
+          v-else
+          id="borderIcon" 
+          :icon="['fas', 'times']" 
+          />
         </button>
         
         <button 
         id="textColorButton" 
         class="colorButton" 
-        @focusin="toggleTextColorPicker"
-        @focusout="toggleTextColorPicker"
+        @click="toggleTextColorPicker"
+
         >
         <strong>T</strong>
         </button>

@@ -12,9 +12,11 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 // Import the specific icons you want to use
 import { faPalette } from '@fortawesome/free-solid-svg-icons'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 // Add the icons to the library
 library.add(faPalette)
+library.add(faTimes)
 
 // Register the FontAwesomeIcon component globally
 app.component('font-awesome-icon', FontAwesomeIcon)
