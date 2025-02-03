@@ -14,25 +14,33 @@ export default {
       cardTitle: this.cardProp.title,
       code: this.cardProp.code,
       description: this.cardProp.description,
-      colorPicker: false,
-      selectedBackgroundColor: null 
+      bgColorPicker: false,
+      selectedBackgroundColor: null,
+      borderColorPicker: false,
+      selectedBorderColor: null
     };
   },
 
   methods: {
-    openColorPicker() {
-      if(this.colorPicker === false){
-      this.colorPicker = true;} 
+    openBgColorPicker() {
+      if(this.bgColorPicker === false){
+      this.bgColorPicker = true;} 
       else {
-        this.colorPicker = false
+        this.bgColorPicker = false
       }
-    }
-  },
+    },
 
-  watch:{
-    selectedColor(newVal, oldVal){
-      console.log('newval', newVal);
-      console.log('oldval', oldVal)
+    closeBgColorPicker() {
+      if(this.bgColorPicker === true){
+      this.bgColorPicker = false;} 
+    },
+
+    openBorderColorPicker() {
+      if(this.borderColorPicker === false){
+      this.borderColorPicker = true;} 
+      else {
+        this.borderColorPicker = false
+      }
     }
   }
 };
@@ -40,25 +48,51 @@ export default {
 
 <template>
   <section
-  v-bind:style="{'background-color' : selectedBackgroundColor || '#eff3f6'}"
+  v-bind:style="
+  {'background-color' : selectedBackgroundColor || '#eff3f6',
+    'border-color': selectedBorderColor || '#c9c9c9'
+  }"
   >
 
-    <div id="overlay">
+    <div class="overlay">
       <v-color-picker 
-      v-if="colorPicker === true" 
-      class="colorPicker"
-      v-model="selectedBackgroundColor" >
+      v-if="bgColorPicker === true" 
+      id="bgColorPicker"
+      v-model="selectedBackgroundColor" 
+      mode="hsl"
+      >
+      </v-color-picker>
+    </div>
+
+    <div class="overlay">
+      <v-color-picker 
+      v-if="borderColorPicker === true" 
+      id="borderColorPicker"
+      v-model="selectedBorderColor" 
+      mode="hsl"
       >
       </v-color-picker>
     </div>
 
     <div id="layout">
       <div id="firstRow">
-        <h3>{{ cardTitle }}</h3>
-        <button class="colorButton" @click="openColorPicker"><!--Add icon here--></button>
+          <h3>{{ cardTitle }}</h3>
+
+          <div id="icons">
+          <button id="bgColorButton" class="colorButton" @click="openBgColorPicker">
+            <!--add icon here-->
+          </button>
+          <button id="borderColorButton" class="colorButton" @click="openBorderColorPicker">
+          <!--add icon here-->
+        </button>
+      </div>
+
       </div>
         <p v-if="description !== null">{{ description }}</p>
-      <div id="codeBlock">
+      <div 
+      id="codeBlock"
+      :style="{'border-color': selectedBorderColor}"
+      >
         <pre><code>{{ code }}</code></pre>
       </div>
     </div>
@@ -92,7 +126,7 @@ code {
   border: solid 1px #c9c9c9;
 }
 
-#overlay{
+.overlay{
   position:absolute;
   margin-top: 2rem;
   z-index: 1;
@@ -102,15 +136,32 @@ code {
   flex-grow: 1;
 }
 
+#icons{
+  display: flex;
+  gap: 1rem;
+}
+
 .colorButton{
   height: 20px;
   width: 20px;
-  background-color: black;
 }
+
+#bgColorButton{
+  background-color: rgb(0, 0, 0);
+}
+
+#borderColorButton{
+  background-color: aqua;
+}
+
+
 
 #firstRow{
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
+
+
 </style>
