@@ -112,7 +112,7 @@ export default {
           @focusin="toggleBgColorPicker"
           @focusout="toggleBgColorPicker"
           >
-            <!--add icon here-->
+          <font-awesome-icon id="fillIcon" :icon="['fas', 'palette']" />
           </button>
 
           <button id="borderColorButton" 
@@ -120,7 +120,7 @@ export default {
           @focusin="toggleBorderColorPicker"
           @focusout="toggleBorderColorPicker"
           >
-          <!--add icon here-->
+          <font-awesome-icon id="borderIcon" :icon="['fas', 'palette']" />
         </button>
         
         <button 
@@ -129,7 +129,7 @@ export default {
         @focusin="toggleTextColorPicker"
         @focusout="toggleTextColorPicker"
         >
-          <!--add icon here-->
+        <strong>T</strong>
         </button>
       </div>
 
@@ -194,22 +194,13 @@ code {
 }
 
 .colorButton{
-  height: 20px;
-  width: 20px;
+  height: 24px;
+  width: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
 }
-
-#bgColorButton{
-  background-color: rgb(0, 0, 0);
-}
-
-#borderColorButton{
-  background-color: aqua;
-}
-
-#textColorButton{
-  background-color: rgb(255, 145, 0);
-}
-
 
 #firstRow{
   display: flex;
@@ -219,6 +210,27 @@ code {
 
 .colorPickerTitle{
   padding: 0.5rem;
+}
+
+#fillIcon{
+  color: white;
+}
+
+#bgColorButton{
+  background-color: black;
+}
+
+#borderIcon{
+  color: black;
+}
+
+#borderColorButton{
+  border: solid black 1px;
+}
+
+#textColorButton{
+  background-color: black;
+  color: white;
 }
 
 </style>
