@@ -131,7 +131,6 @@ export default {
       html2canvas(document.querySelector("#myCanvas")).then((canvas) => {
         const dataUrl = canvas.toDataURL("image/png");
 
-        //Download the image
         new JsFileDownloader({
           url: dataUrl,
           filename: "myCheatSheet.png",

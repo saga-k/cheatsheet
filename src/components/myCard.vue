@@ -240,6 +240,9 @@ code {
   justify-content: center;
   align-items: center;
   border-radius: 2px;
+  &:focus{
+    outline: none;
+  }
 }
 
 #firstRow{
