@@ -14,10 +14,15 @@ export default {
       cardTitle: this.cardProp.title,
       code: this.cardProp.code,
       description: this.cardProp.description,
+
       bgColorPicker: false,
       selectedBackgroundColor: null,
+
       borderColorPicker: false,
-      selectedBorderColor: null
+      selectedBorderColor: null,
+
+      textColorPicker: false,
+      selectedTextColor: null
     };
   },
 
@@ -28,11 +33,9 @@ export default {
       else {
         this.bgColorPicker = false
       }
-    },
-
-    closeBgColorPicker() {
-      if(this.bgColorPicker === true){
-      this.bgColorPicker = false;} 
+      if(this.borderColorPicker === true){
+        this.borderColorPicker = false
+      }
     },
 
     openBorderColorPicker() {
@@ -40,6 +43,20 @@ export default {
       this.borderColorPicker = true;} 
       else {
         this.borderColorPicker = false
+      }
+      if(this.bgColorPicker === true){
+        this.bgColorPicker = false
+      }
+    },
+
+    openTextColorPicker() {
+      if(this.textColorPicker === false){
+      this.textColorPicker = true;} 
+      else {
+        this.textColorPicker = false
+      }
+      if(this.bgColorPicker === true){
+        this.bgColorPicker = false
       }
     }
   }
@@ -54,12 +71,16 @@ export default {
   }"
   >
 
-    <div class="overlay">
-      <v-color-picker 
-      v-if="bgColorPicker === true" 
+    <div class="overlay"
+      v-if="bgColorPicker === true">
+      <div class="colorPickerTitle">
+        <h4>Select Background Color</h4>
+      </div>
+      <v-color-picker  
       id="bgColorPicker"
       v-model="selectedBackgroundColor" 
       mode="hsl"
+      elevation="0"
       >
       </v-color-picker>
     </div>
@@ -74,6 +95,16 @@ export default {
       </v-color-picker>
     </div>
 
+    <div class="overlay">
+      <v-color-picker 
+      v-if="textColorPicker === true" 
+      id="textColorPicker"
+      v-model="selectedTextColor" 
+      mode="hsl"
+      >
+      </v-color-picker>
+    </div>
+
     <div id="layout">
       <div id="firstRow">
           <h3>{{ cardTitle }}</h3>
@@ -83,6 +114,9 @@ export default {
             <!--add icon here-->
           </button>
           <button id="borderColorButton" class="colorButton" @click="openBorderColorPicker">
+          <!--add icon here-->
+        </button>
+        <button id="textColorButton" class="colorButton" @click="openTextColorPicker">
           <!--add icon here-->
         </button>
       </div>
@@ -130,6 +164,9 @@ code {
   position:absolute;
   margin-top: 2rem;
   z-index: 1;
+  box-shadow: 0px 0px 34px 8px rgba(0,0,0,0.19);
+  border-radius: 5px;
+  background-color: white;
 }
 
 #layout{
@@ -154,6 +191,9 @@ code {
   background-color: aqua;
 }
 
+#textColorButton{
+  background-color: rgb(255, 145, 0);
+}
 
 
 #firstRow{
@@ -162,6 +202,8 @@ code {
   align-items: center;
 }
 
-
+.colorPickerTitle{
+  padding: 0.5rem;
+}
 
 </style>
