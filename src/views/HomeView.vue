@@ -10,6 +10,8 @@ import JsFileDownloader from "js-file-downloader";
 export default {
   name: "HomeView",
 
+  //Declare Components ----------------------------------------------------------
+
   components: {
     SizeInput,
     MyCanvas,
@@ -17,6 +19,8 @@ export default {
     myCard,
     draggable,
   },
+
+  //Data ----------------------------------------------------------------
 
   data() {
     return {
@@ -43,19 +47,27 @@ export default {
     };
   },
 
+  //Created (call fetch and add eventlistener for window resize) ---------------
   created() {
     this.fetchData();
     this.updateViewportWidth();
     window.addEventListener("resize", this.updateViewportWidth);
   },
 
+  //Methods ---------------------------------------------------------------------------
+
   methods: {
+
+    //Get size from sizeinput emit and send to data to be used in canvas styling
     updateCanvasSize(Size) {
       this.canvasSize.height = `${Size.height}`;
       this.canvasSize.width = `${Size.width}`;
+
+      //Call function to check for overflow when canvas is resized
       this.updateViewportWidth();
     },
 
+    //Fetch the data
     async fetchData() {
       const promise = await fetch("/data.json");
       const data = await promise.json();
@@ -63,25 +75,33 @@ export default {
       this.isFetched = true;
     },
 
+    //Get selected object from autocomplete component and push data-object to cards array to be rendered. 
     addCard(added) {
       this.cards.push(added);
+
+      //Check for overflow when more cards are added
       this.canvasSize.scrollHeight = this.$refs.MyCanvas.$refs.canvasSection.scrollHeight;
       this.canvasSize.scrollWidth = this.$refs.MyCanvas.$refs.canvasSection.scrollWidth;
     },
 
+    //Get title of removed object from autocomplete, find it in cards array and delete
     removeCard(removed) {
       let found = this.cards.find((value) => value.title === removed);
       let index = this.cards.indexOf(found);
       this.cards.splice(index, 1);
+
+      //Check for overflow when cards are deleted
       this.canvasSize.scrollHeight = this.$refs.MyCanvas.$refs.canvasSection.scrollHeight;
       this.canvasSize.scrollWidth = this.$refs.MyCanvas.$refs.canvasSection.scrollWidth;
     },
 
+    //Update viewportWidth value then call function to calculate scale based on overflow
     updateViewportWidth() {
       this.viewportWidth = window.innerWidth - 40;
       this.calculateScale();
     },
 
+    //Check if canvas has overflow and scale it down to fit
     calculateScale() {
       let percentage = (this.viewportWidth / this.canvasSize.width) * 100;
       this.scalePercentage = percentage;
@@ -93,11 +113,13 @@ export default {
       }
     },
 
+    //HTML2Canvas transforms canvas into png
     createImage() {
       console.log("something happened");
       html2canvas(document.querySelector("#myCanvas")).then((canvas) => {
         const dataUrl = canvas.toDataURL("image/png");
 
+        //Download the image
         new JsFileDownloader({
           url: dataUrl,
           filename: "myCheatSheet.png",
@@ -108,6 +130,7 @@ export default {
     },
   },
 
+  //Checks if canvas content is overflowing to display error-msg 
   computed: {
     checkOverflow() {
       return (
@@ -120,38 +143,62 @@ export default {
 </script>
 
 <template>
+<!--Template starts here ------------------------------------------------------>
 
   <article id="fullLayout">
+
+    <!--This is where users selections are made ------------------------------->
     <div id="options-header">
       <h1>Create a front end cheat sheet</h1>
+
+      <!--Input fields and buttons ---------------->
       <div id="firstRow">
         <SizeInput @emitSize="updateCanvasSize" />
         <button @click="createImage">Download image</button>
       </div>
-      <MultiSelectDropdown @cardAdded="addCard" @cardRemoved="removeCard" v-if="isFetched" :data-prop="fetchedData" />
+
+      <!--Multiselect dropdown here ---------------->
+      <MultiSelectDropdown 
+      @cardAdded="addCard" 
+      @cardRemoved="removeCard" 
+      v-if="isFetched" 
+      :data-prop="fetchedData" />
     </div>
 
+    <!--This is the error message that is displayed if canvas has overlow ----->
     <section id="error" v-if="checkOverflow">
       <h4>Overflow detected</h4>
       <p>Rearrange cards, remove cards or edit canvas dimensions.</p>
     </section>
 
-    <MyCanvas :style="{
+    <!--This is the canvas ---------------------------------------------------->
+    <MyCanvas 
+
+      :style="{
       height: canvasSize.height + 'px',
       width: canvasSize.width + 'px',
       transform: hasWindowOverflow ? `scale(${scalePercentage}%)` : 'none'}" 
       id="myCanvas" 
       ref="MyCanvas">
+
+      <!--This is the canvas slot containing a draggable component that loops 
+      through the cards array ---------------------------------------------->
       <draggable id="draggable" v-model="cards" item-key="id">
         <template #item="{ element: card }">
+
+          <!--Below is the template for all of the cards ---------------------->
           <myCard :card-prop="card"/>
         </template>
       </draggable>
+
     </MyCanvas>
+
   </article>
+
 </template>
 
 <style scoped>
+/*This is all the styling, not too important now, will rearrange later */
 
 #fullLayout {
   height: 100%;
