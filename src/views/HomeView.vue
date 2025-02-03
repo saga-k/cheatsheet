@@ -62,7 +62,7 @@ export default {
     updateCanvasSize(Size) {
       this.canvasSize.height = `${Size.height}`;
       this.canvasSize.width = `${Size.width}`;
-
+      
       //Call function to check for overflow when canvas is resized
       this.updateViewportWidth();
     },
@@ -80,20 +80,27 @@ export default {
       this.cards.push(added);
 
       //Check for overflow when more cards are added
-      this.canvasSize.scrollHeight = this.$refs.MyCanvas.$refs.canvasSection.scrollHeight;
-      this.canvasSize.scrollWidth = this.$refs.MyCanvas.$refs.canvasSection.scrollWidth;
+      this.$nextTick(() => {
+        if (this.$refs.MyCanvas){
+        this.canvasSize.scrollHeight = this.$refs.MyCanvas.$refs.canvasSection.scrollHeight;
+      this.canvasSize.scrollWidth = this.$refs.MyCanvas.$refs.canvasSection.scrollWidth;}
+      })
     },
 
     //Get title of removed object from autocomplete, find it in cards array and delete
     removeCard(removed) {
-      let found = this.cards.find((value) => value.title === removed);
-      let index = this.cards.indexOf(found);
-      this.cards.splice(index, 1);
+    let found = this.cards.find((value) => value.title === removed);
+    let index = this.cards.indexOf(found);
+    this.cards.splice(index, 1);
 
-      //Check for overflow when cards are deleted
-      this.canvasSize.scrollHeight = this.$refs.MyCanvas.$refs.canvasSection.scrollHeight;
-      this.canvasSize.scrollWidth = this.$refs.MyCanvas.$refs.canvasSection.scrollWidth;
-    },
+  // Wait for the DOM to update before checking for overflow
+  this.$nextTick(() => {
+    if (this.$refs.MyCanvas) {
+      this.canvasSize.scrollHeight = this.$refs.MyCanvas.$refs.canvasSection?.scrollHeight || 0;
+      this.canvasSize.scrollWidth = this.$refs.MyCanvas.$refs.canvasSection?.scrollWidth || 0;
+    }
+  });
+},
 
     //Update viewportWidth value then call function to calculate scale based on overflow
     updateViewportWidth() {
@@ -111,6 +118,11 @@ export default {
       } else {
         this.hasWindowOverflow = false;
       }
+    },
+
+    onDrag(){
+      this.canvasSize.scrollHeight = this.$refs.MyCanvas.$refs.canvasSection?.scrollHeight || 0;
+      this.canvasSize.scrollWidth = this.$refs.MyCanvas.$refs.canvasSection?.scrollWidth || 0;
     },
 
     //HTML2Canvas transforms canvas into png
@@ -141,6 +153,14 @@ export default {
   },
 };
 </script>
+
+
+
+
+
+
+
+
 
 <template>
 <!--Template starts here ------------------------------------------------------>
@@ -183,10 +203,12 @@ export default {
 
       <!--This is the canvas slot containing a draggable component that loops 
       through the cards array ---------------------------------------------->
-      <draggable id="draggable" v-model="cards" item-key="id">
+      <draggable 
+      id="draggable" 
+      v-model="cards" 
+      item-key="id"
+      @drag="onDrag">
         <template #item="{ element: card }">
-
-          <!--Below is the template for all of the cards ---------------------->
           <myCard :card-prop="card"/>
         </template>
       </draggable>
@@ -196,6 +218,16 @@ export default {
   </article>
 
 </template>
+
+
+
+
+
+
+
+
+
+
 
 <style scoped>
 /*This is all the styling, not too important now, will rearrange later */
