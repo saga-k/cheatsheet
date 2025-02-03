@@ -15,7 +15,7 @@ export default {
       code: this.cardProp.code,
       description: this.cardProp.description,
       colorPicker: false,
-      selectedColor: null //Todo: read docs
+      selectedBackgroundColor: null 
     };
   },
 
@@ -30,7 +30,7 @@ export default {
   },
 
   watch:{
-    backgroundColor(newVal, oldVal){
+    selectedColor(newVal, oldVal){
       console.log('newval', newVal);
       console.log('oldval', oldVal)
     }
@@ -39,13 +39,15 @@ export default {
 </script>
 
 <template>
-  <section>
+  <section
+  v-bind:style="{'background-color' : selectedBackgroundColor || '#eff3f6'}"
+  >
 
     <div id="overlay">
       <v-color-picker 
       v-if="colorPicker === true" 
       class="colorPicker"
-      v-bind="selectedColor" ><!--Todo: read docs-->
+      v-model="selectedBackgroundColor" >
       >
       </v-color-picker>
     </div>
