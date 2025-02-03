@@ -6,7 +6,7 @@ export default {
     cardProp: {
       type: Object,
       required: true,
-    },
+    }
   },
 
   data() {
@@ -22,7 +22,9 @@ export default {
       selectedBorderColor: null,
 
       textColorPicker: false,
-      selectedTextColor: null
+      selectedTextColor: null,
+
+      isExporting: this.exportProp
     };
   },
 

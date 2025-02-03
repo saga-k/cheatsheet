@@ -38,6 +38,8 @@ export default {
       hasWindowOverflow: true,
 
       scalePercentage: null,
+
+      isExporting: false
     };
   },
 
@@ -137,11 +139,12 @@ export default {
     <MyCanvas :style="{
       height: canvasSize.height + 'px',
       width: canvasSize.width + 'px',
-      transform: hasWindowOverflow ? `scale(${scalePercentage}%)` : 'none',
-    }" id="myCanvas" ref="MyCanvas">
+      transform: hasWindowOverflow ? `scale(${scalePercentage}%)` : 'none'}" 
+      id="myCanvas" 
+      ref="MyCanvas">
       <draggable id="draggable" v-model="cards" item-key="id">
         <template #item="{ element: card }">
-          <myCard :card-prop="card" />
+          <myCard :card-prop="card"/>
         </template>
       </draggable>
     </MyCanvas>
