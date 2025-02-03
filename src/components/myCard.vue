@@ -23,8 +23,6 @@ export default {
 
       textColorPicker: false,
       selectedTextColor: null,
-
-      isExporting: this.exportProp
     };
   },
 
