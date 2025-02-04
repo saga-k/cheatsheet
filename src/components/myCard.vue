@@ -143,7 +143,7 @@ export default {
 
     <div id="layout">
       <div id="firstRow">
-          <h3 :style="{'color': selectedTextColor || 'black'}">{{ cardTitle }}</h3>
+          <h3 :style="{'color': selectedTextColor || '#414141'}">{{ cardTitle }}</h3>
 
           <div id="icons">
           <button id="bgColorButton"
@@ -193,7 +193,7 @@ export default {
       </div>
         <p 
         v-if="description !== null"
-        :style="{'color': selectedTextColor || 'black'}"
+        :style="{'color': selectedTextColor || '#5E5E5E'}"
         >{{ description }}</p>
       <div 
       id="codeBlock"
@@ -277,20 +277,24 @@ code {
 }
 
 #bgColorButton{
-  background-color: black;
+  background-color: #2E5A78
 }
 
 #borderIcon{
-  color: black;
+  color: #2E5A78;
 }
 
 #borderColorButton{
-  border: solid black 1px;
+  border: solid #2E5A78 1px;
 }
 
 #textColorButton{
-  background-color: black;
+  background-color: #2E5A78;
   color: white;
+}
+
+h1, h2, h3, h4, h5, h6, p, li, button, code{
+  color: #414141;
 }
 
 </style>

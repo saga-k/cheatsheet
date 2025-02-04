@@ -75,18 +75,20 @@ export default {
     density="comfortable"
     variant="outlined"
     bg-color="white"
+    color="#2E5A78"
   >
     <v-list-item>{{ titles }}</v-list-item>
   </v-autocomplete>
 </template>
 
 <style scoped>
-.v-input {
-  box-shadow: none;
-}
 
 ::v-deep(.v-chip) {
-  background-color: #eff3f6 !important;
+  background-color: #2E5A78;
+  color: white;
 }
 
+h1, h2, h3, h4, h5, h6, p, li, button{
+  color: #5E5E5E;
+}
 </style>

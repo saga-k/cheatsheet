@@ -69,7 +69,7 @@ export default {
       this.$nextTick(() => {
         if (this.$refs.MyCanvas){
         this.canvasSize.scrollHeight = this.$refs.MyCanvas.$refs.canvasSection.scrollHeight;
-      this.canvasSize.scrollWidth = this.$refs.MyCanvas.$refs.canvasSection.scrollWidth;}
+        this.canvasSize.scrollWidth = this.$refs.MyCanvas.$refs.canvasSection.scrollWidth;}
       })
     },
 
@@ -89,7 +89,7 @@ export default {
       this.$nextTick(() => {
         if (this.$refs.MyCanvas){
         this.canvasSize.scrollHeight = this.$refs.MyCanvas.$refs.canvasSection.scrollHeight;
-      this.canvasSize.scrollWidth = this.$refs.MyCanvas.$refs.canvasSection.scrollWidth;}
+        this.canvasSize.scrollWidth = this.$refs.MyCanvas.$refs.canvasSection.scrollWidth;}
       })
     },
 
@@ -160,13 +160,6 @@ export default {
 </script>
 
 
-
-
-
-
-
-
-
 <template>
 <!--Template starts here ------------------------------------------------------>
 
@@ -221,7 +214,7 @@ export default {
 
       <div id="emptyState" v-else>
         <h2>Canvas is empty</h2>
-        <strong :canvasSize>Canvas size: {{canvasSize.width}} x {{ canvasSize.height }} pixels.</strong>
+        <h4 :canvasSize>Canvas size: {{canvasSize.width}} x {{ canvasSize.height }} pixels.</h4>
         <p> Add some cards using the dropdown above</p>
       </div>
 
@@ -311,5 +304,9 @@ button {
 #error h4 {
   color: #f02626;
   line-height: 2em;
+}
+
+h1, h2, h3, h4, h5, h6, p, li, button{
+  color: #414141;
 }
 </style>

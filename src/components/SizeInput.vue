@@ -50,6 +50,8 @@ export default {
     :style="{'width': '200px'}"
     density="comfortable"
     bg-color="white"
+    hide-details
+    color="#2E5A78"
     ></v-number-input>
 
     <v-number-input
@@ -64,6 +66,8 @@ export default {
     :style="{'width': '200px'}"
     density="comfortable"
     bg-color="white"
+    hide-details
+    color="#2E5A78"
     ></v-number-input>
 
     <button @click="onClick">Set Dimensions</button>
@@ -94,5 +98,10 @@ button {
   height: 47px;
   text-wrap: nowrap;
 }
+
+h1, h2, h3, h4, h5, h6, p, li, button{
+  color: #5E5E5E;
+}
+
 
 </style>
