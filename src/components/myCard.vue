@@ -85,6 +85,7 @@ export default {
 </script>
 
 <template>
+  
   <section
   v-bind:style="
   {'background-color' : selectedBackgroundColor || '#eff3f6',
@@ -143,33 +144,43 @@ export default {
           class="colorButton"
           @click="toggleBgColorPicker"
           >
-          <font-awesome-icon id="fillIcon" :icon="['fas', 'palette']" />
+          <font-awesome-icon
+          v-if="bgColorPicker === false"
+          id="fillIcon" :icon="['fas', 'palette']" />
+          <font-awesome-icon 
+          v-else
+          id="borderIcon" 
+          :icon="['fas', 'times']"
+          :style="{'color': 'white'}"
+          />
           </button>
 
           <button id="borderColorButton" 
           class="colorButton" 
-          @click="toggleBorderColorPicker"
-          >
+          @click="toggleBorderColorPicker">
+
           <font-awesome-icon 
           v-if="borderColorPicker === false"
           id="borderIcon" 
-          :icon="['fas', 'palette']" 
-          />
+          :icon="['fas', 'palette']" />
 
           <font-awesome-icon 
           v-else
           id="borderIcon" 
-          :icon="['fas', 'times']" 
-          />
+          :icon="['fas', 'times']" />
         </button>
         
         <button 
         id="textColorButton" 
         class="colorButton" 
-        @click="toggleTextColorPicker"
-
-        >
-        <strong>T</strong>
+        @click="toggleTextColorPicker">
+        <strong v-if="textColorPicker === false" >T</strong>
+        <font-awesome-icon 
+          v-else
+          id="borderIcon" 
+          :icon="['fas', 'times']"
+          :style="{'color': 'white'}"
+          />
         </button>
       </div>
 
