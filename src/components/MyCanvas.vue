@@ -19,7 +19,7 @@ export default {
 
 <template>
   <section ref="canvasSection">
-    <slot><p>Select cards to add</p></slot>
+    <slot></slot>
   </section>
 </template>
 
@@ -33,4 +33,6 @@ section {
   border-radius: 8px;
   justify-content: center;
 }
+
+p{color: black;}
 </style>

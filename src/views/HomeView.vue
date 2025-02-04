@@ -65,6 +65,12 @@ export default {
       
       //Call function to check for overflow when canvas is resized
       this.updateViewportWidth();
+
+      this.$nextTick(() => {
+        if (this.$refs.MyCanvas){
+        this.canvasSize.scrollHeight = this.$refs.MyCanvas.$refs.canvasSection.scrollHeight;
+      this.canvasSize.scrollWidth = this.$refs.MyCanvas.$refs.canvasSection.scrollWidth;}
+      })
     },
 
     //Fetch the data
@@ -168,7 +174,7 @@ export default {
 
     <!--This is where users selections are made ------------------------------->
     <div id="options-header">
-      <h1>Create a front end cheat sheet</h1>
+      <h1>Create a custom Javascript cheat sheet</h1>
 
       <!--Input fields and buttons ---------------->
       <div id="firstRow">
@@ -203,6 +209,7 @@ export default {
       <!--This is the canvas slot containing a draggable component that loops 
       through the cards array ---------------------------------------------->
       <draggable 
+      v-if="cards.length>0"
       id="draggable" 
       v-model="cards" 
       item-key="id"
@@ -212,6 +219,12 @@ export default {
         </template>
       </draggable>
 
+      <div id="emptyState" v-else>
+        <h2>Canvas is empty</h2>
+        <strong :canvasSize>Canvas size: {{canvasSize.width}} x {{ canvasSize.height }} pixels.</strong>
+        <p> Add some cards using the dropdown above</p>
+      </div>
+
     </MyCanvas>
 
   </article>
@@ -219,17 +232,14 @@ export default {
 </template>
 
 
-
-
-
-
-
-
-
-
-
 <style scoped>
 /*This is all the styling, not too important now, will rearrange later */
+
+#emptyState{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 #fullLayout {
   height: 100%;
@@ -256,7 +266,7 @@ h1 {
 
 #firstRow {
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: space-between;
 }
 
@@ -282,7 +292,7 @@ button {
   padding: 0rem 1rem;
   border-radius: 3px;
   font-size: 14px;
-  height: 36px;
+  height: 47px;
   text-wrap: nowrap;
 }
 

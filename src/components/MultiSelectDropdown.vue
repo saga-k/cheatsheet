@@ -89,7 +89,4 @@ export default {
   background-color: #eff3f6 !important;
 }
 
-::v-deep(.v-chip__close) {
-  background-image: url(src/assets/xmark-solid.svg);
-}
 </style>

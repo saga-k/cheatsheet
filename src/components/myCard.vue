@@ -3,7 +3,7 @@ export default {
   name: "myCard",
 
   created() {
-    window.addEventListener("keydown", this.onEsc);
+    window.addEventListener("keydown", this.closeOverlay);
   },
 
   props: {
@@ -73,8 +73,8 @@ export default {
       }
     },
 
-    onEsc(event){
-      if(event.key === 'Escape'){
+    closeOverlay(event){
+      if(event.key === 'Escape' || event.key === 'enter'){
         this.textColorPicker = false
         this.bgColorPicker = false
         this.borderColorPicker = false
@@ -99,6 +99,8 @@ export default {
         <h4>Select Background Color</h4>
       </div>
       <v-color-picker  
+      hide-canvas
+      show-swatches
       id="bgColorPicker"
       v-model="selectedBackgroundColor" 
       mode="hex"
@@ -113,6 +115,8 @@ export default {
         <h4>Select Border Color</h4>
       </div>
       <v-color-picker 
+      hide-canvas
+      show-swatches
       id="borderColorPicker"
       v-model="selectedBorderColor" 
       mode="hex"
@@ -127,6 +131,8 @@ export default {
         <h4>Select Text Color</h4>
       </div>
       <v-color-picker 
+      hide-canvas
+      show-swatches
       id="textColorPicker"
       v-model="selectedTextColor" 
       mode="hex"
