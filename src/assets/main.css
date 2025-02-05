@@ -29,17 +29,20 @@ h2{
   letter-spacing: -0.5px;
 }
 
-h4{
+h3{
   font-family: DmSans, sans-serif;
   font-weight: 600;
   letter-spacing: -0.3px;
 }
 
-
 p,
 button,
 code {
   font-size: 14px;
+}
+
+.pLarge{
+  font-size: 18px;
 }
 
 

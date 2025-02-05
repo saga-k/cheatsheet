@@ -10,6 +10,11 @@ export default {
     cardProp: {
       type: Object,
       required: true,
+    },
+
+    hideIcons: {
+      type: Boolean,
+      required: true
     }
   },
 
@@ -125,7 +130,7 @@ export default {
       <div id="firstRow">
         <h3 :style="{ 'color': selectedTextColor }">{{ cardTitle }}</h3>
 
-        <div id="icons">
+        <div id="icons" v-if="hideIcons === false">
           <button id="bgColorButton" class="colorButton" @click="toggleBgColorPicker"
             :style="{ 'backgroundColor': selectedTextColor || 'black' }">
 

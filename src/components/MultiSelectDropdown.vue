@@ -72,8 +72,6 @@ export default {
 </template>
 
 <style scoped>
-/*Chip selector*/
-
 ::v-deep(.v-chip) {
   background-color: black;
   color: white;
