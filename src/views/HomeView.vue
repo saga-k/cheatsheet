@@ -240,24 +240,13 @@ export default {
   z-index: 0;
 }
 
-#overlay {
-  position: absolute;
-  z-index: 1;
-}
-
-
-
-h1 {
-  line-height: 1em;
-}
-
 #myCanvas {
   transform-origin: top left;
   margin: auto;
 }
 
 #draggable {
-  display: flex !important;
+  display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: flex-start;
@@ -265,7 +254,6 @@ h1 {
   column-gap: 1rem;
   row-gap: 1rem;
 }
-
 
 #error {
   background-color: #ffe7e7;

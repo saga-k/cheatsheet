@@ -10,8 +10,8 @@ export default {
 
   data() {
     return {
-      width: null,
-      height: null,
+      width: 1400,
+      height: 900,
     };
   },
 
@@ -41,11 +41,12 @@ export default {
 
     <v-number-input :reverse="false" controlVariant="default" label="Width (px)" :hideInput="false" inset
       variant="outlined" v-model="width" id="input-width" :style="{ 'minWidth': '200px' }" density="comfortable"
-      bg-color="white" hide-details color="#2E5A78"></v-number-input>
+      bg-color="white" hide-details color="black">
+    </v-number-input>
 
     <v-number-input :reverse="false" controlVariant="default" label="Height (px)" :hideInput="false" inset
       variant="outlined" v-model="height" id="input-height" :style="{ 'minWidth': '200px' }" density="comfortable"
-      bg-color="white" hide-details color="#2E5A78"></v-number-input>
+      bg-color="white" hide-details color="black"></v-number-input>
 
     <button id="setSizeButton" class="basicButton" @click="onClick">Set Dimensions</button>
     <div id="fancyButtonSlot">
@@ -78,17 +79,8 @@ export default {
   justify-self: flex-end;
 }
 
-input {
-  background-color: white;
-  border: 1px solid #c9c9c9;
-  border-radius: 3px;
-  padding: 0.3rem;
-}
 
 @media screen and (max-width: 850px) {
-  .basicButton {
-    background-color: aqua;
-  }
 
   #mainWrapper {
     display: grid;
@@ -96,7 +88,6 @@ input {
     grid-template-columns: 1fr 1fr 1fr;
     row-gap: 1.5rem;
   }
-
 
   #setSizeButton {
     grid-column: 1;
