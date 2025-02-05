@@ -2,6 +2,7 @@
 export default{
   name: 'FancyButton'
 }
+
 </script>
 
 <template>
@@ -38,10 +39,12 @@ export default{
   width: 100px;
   border: solid black 1px;
   margin: 2rem;
+  display: grid;
+  
 }
 
 .fill{
-  width: 
+  
 }
 
 </style>
