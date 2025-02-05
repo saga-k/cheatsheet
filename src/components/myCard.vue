@@ -197,7 +197,7 @@ export default {
         >{{ description }}</p>
       <div 
       id="codeBlock"
-      :style="{'border-color': selectedBorderColor}"
+      :style="{'border-color': selectedBorderColor || '#c9c9c9'}"
       >
         <pre><code>{{ code }}</code></pre>
       </div>
@@ -207,8 +207,7 @@ export default {
 
 <style scoped>
 section {
-  background-color: #eff3f6;
-  border: solid #c9c9c9 1px;
+  border: solid 1px;
   padding: 0.5rem;
   height: fit-content;
   border-radius: 5px;
@@ -229,7 +228,7 @@ code {
   background-color: white;
   padding: 0.5rem;
   border-radius: 5px;
-  border: solid 1px #c9c9c9;
+  border: solid 1px;
 }
 
 .overlay{
