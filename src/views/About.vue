@@ -13,7 +13,25 @@
     </section>
 
     <section id="features">
+      <h2>Features</h2>
 
+      <div class="featureWrapper">
+        <div class="iconCanvas"></div>
+        <div class="rightSide">
+          <h3>Customizable Canvas Size</h3>
+          <p>Start with the perfect canvas size for your cheat sheet. Choose dimensions that suit your style and the
+            amount of information you want to display.</p>
+        </div>
+      </div>
+      <div class="line"></div>
+      <div class="featureWrapper">
+        <div class="iconCanvas"></div>
+        <div class="rightSide">
+          <h3>Add and Organize Cards</h3>
+          <p>Choose from a variety of JavaScript concepts, and arrange them as cards on your canvas. Add as many cards
+            as you need, and organize them in a way that works for you. </p>
+        </div>
+      </div>
     </section>
 
   </article>
@@ -23,6 +41,7 @@
 #fullLayout {
   max-width: 1000px;
   margin: auto;
+  padding: 4rem;
 }
 
 #heroCopy {
@@ -31,6 +50,45 @@
 }
 
 #heroCopy p {
-  max-width: 700px;
+  max-width: 750px;
+}
+
+.iconCanvas {
+  height: 80px;
+  width: 80px;
+  border-radius: 50px;
+  background-color: darkgray;
+}
+
+p {
+  font-size: 16px;
+}
+
+.pLarge {
+  font-size: 20px;
+}
+
+#features {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.featureWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rightSide {
+  display: flex;
+  flex-direction: column;
+  max-width: 650px;
+}
+
+.line {
+  height: 140px;
+  width: 1px;
+  background-color: black;
+  margin-left: 40px;
 }
 </style>
