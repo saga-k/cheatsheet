@@ -2,6 +2,12 @@
 import { RouterView } from "vue-router";
 </script>
 
+
 <template>
-  <RouterView/>
+  <nav>
+    <RouterLink to="/">Generator</RouterLink>
+    <routerLink to="about">About</routerLink>
+  </nav>
+
+  <RouterView />
 </template>
