@@ -1,13 +1,22 @@
 <script>
 export default {
-  name: 'FancyButton'
+  name: 'FancyButton',
+
+  methods: {
+    onClick() {
+      this.$emit('clicked')
+    }
+  },
+  emits: ['clicked']
 }
 
 </script>
 
 <template>
   <div id="outerContainer">
-    <button id='fancyButton'>Fancy button</button>
+    <button id='fancyButton' @click="onClick">
+      <slot>Fancy button</slot>
+    </button>
     <div id='container'>
       <div id='purple' class='fill'></div>
       <div id='blue' class='fill'></div>
@@ -17,12 +26,6 @@ export default {
       <div id='red' class='fill'></div>
     </div>
   </div>
-
-  <button>
-    <slot>
-      Fancy Button
-    </slot>
-  </button>
 </template>
 
 <style scoped>
@@ -30,6 +33,8 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 150px;
+  height: 48px;
 }
 
 #fancyButton {
@@ -39,13 +44,11 @@ export default {
 }
 
 #container {
-  height: 40px;
+  height: 35px;
   width: 100px;
   border: solid black 1px;
-  margin: 2rem;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-
 }
 
 .fill {
@@ -90,11 +93,3 @@ export default {
   box-shadow: 5px 0px 20px 10px #FF0000;
 }
 </style>
-
-7px -5px 0px 0px #4B0082,
-11px -9px 0px 0px #0000FF,
-16px -14px 0px 0px #00FF00,
-20px -17px 0px 0px #FFFF00,
-24px -19px 0px 0px #FF7F00,
-27px -23px 0px 0px #FF0000,
-0px 0px 0px 0px rgba(0,0,0,0);

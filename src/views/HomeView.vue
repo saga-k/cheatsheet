@@ -63,14 +63,15 @@ export default {
     updateCanvasSize(Size) {
       this.canvasSize.height = `${Size.height}`;
       this.canvasSize.width = `${Size.width}`;
-      
+
       //Call function to check for overflow when canvas is resized
       this.updateViewportWidth();
 
       this.$nextTick(() => {
-        if (this.$refs.MyCanvas){
-        this.canvasSize.scrollHeight = this.$refs.MyCanvas.$refs.canvasSection.scrollHeight;
-        this.canvasSize.scrollWidth = this.$refs.MyCanvas.$refs.canvasSection.scrollWidth;}
+        if (this.$refs.MyCanvas) {
+          this.canvasSize.scrollHeight = this.$refs.MyCanvas.$refs.canvasSection.scrollHeight;
+          this.canvasSize.scrollWidth = this.$refs.MyCanvas.$refs.canvasSection.scrollWidth;
+        }
       })
     },
 
@@ -88,26 +89,27 @@ export default {
 
       //Check for overflow when more cards are added
       this.$nextTick(() => {
-        if (this.$refs.MyCanvas){
-        this.canvasSize.scrollHeight = this.$refs.MyCanvas.$refs.canvasSection.scrollHeight;
-        this.canvasSize.scrollWidth = this.$refs.MyCanvas.$refs.canvasSection.scrollWidth;}
+        if (this.$refs.MyCanvas) {
+          this.canvasSize.scrollHeight = this.$refs.MyCanvas.$refs.canvasSection.scrollHeight;
+          this.canvasSize.scrollWidth = this.$refs.MyCanvas.$refs.canvasSection.scrollWidth;
+        }
       })
     },
 
     //Get title of removed object from autocomplete, find it in cards array and delete
     removeCard(removed) {
-    let found = this.cards.find((value) => value.title === removed);
-    let index = this.cards.indexOf(found);
-    this.cards.splice(index, 1);
+      let found = this.cards.find((value) => value.title === removed);
+      let index = this.cards.indexOf(found);
+      this.cards.splice(index, 1);
 
-  // Wait for the DOM to update before checking for overflow
-  this.$nextTick(() => {
-    if (this.$refs.MyCanvas) {
-      this.canvasSize.scrollHeight = this.$refs.MyCanvas.$refs.canvasSection?.scrollHeight || 0;
-      this.canvasSize.scrollWidth = this.$refs.MyCanvas.$refs.canvasSection?.scrollWidth || 0;
-    }
-  });
-},
+      // Wait for the DOM to update before checking for overflow
+      this.$nextTick(() => {
+        if (this.$refs.MyCanvas) {
+          this.canvasSize.scrollHeight = this.$refs.MyCanvas.$refs.canvasSection?.scrollHeight || 0;
+          this.canvasSize.scrollWidth = this.$refs.MyCanvas.$refs.canvasSection?.scrollWidth || 0;
+        }
+      });
+    },
 
     //Update viewportWidth value then call function to calculate scale based on overflow
     updateViewportWidth() {
@@ -127,7 +129,7 @@ export default {
       }
     },
 
-    onDrag(){
+    onDrag() {
       this.canvasSize.scrollHeight = this.$refs.MyCanvas.$refs.canvasSection?.scrollHeight || 0;
       this.canvasSize.scrollWidth = this.$refs.MyCanvas.$refs.canvasSection?.scrollWidth || 0;
     },
@@ -162,11 +164,9 @@ export default {
 
 
 <template>
-<!--Template starts here ------------------------------------------------------>
+  <!--Template starts here ------------------------------------------------------>
 
   <article id="fullLayout">
-
-    <FancyButton></FancyButton>
 
     <!--This is where users selections are made ------------------------------->
     <div id="options-header">
@@ -175,15 +175,12 @@ export default {
       <!--Input fields and buttons ---------------->
       <div id="firstRow">
         <SizeInput @emitSize="updateCanvasSize" />
-        <button @click="createImage">Download image</button>
+        <!--Button here ---------------->
+        <FancyButton @clicked="createImage">Download Image</FancyButton>
       </div>
 
       <!--Multiselect dropdown here ---------------->
-      <MultiSelectDropdown 
-      @cardAdded="addCard" 
-      @cardRemoved="removeCard" 
-      v-if="isFetched" 
-      :data-prop="fetchedData" />
+      <MultiSelectDropdown @cardAdded="addCard" @cardRemoved="removeCard" v-if="isFetched" :data-prop="fetchedData" />
     </div>
 
     <!--This is the error message that is displayed if canvas has overlow ----->
@@ -193,31 +190,23 @@ export default {
     </section>
 
     <!--This is the canvas ---------------------------------------------------->
-    <MyCanvas 
-
-      :style="{
+    <MyCanvas :style="{
       height: canvasSize.height + 'px',
       width: canvasSize.width + 'px',
-      transform: hasWindowOverflow ? `scale(${scalePercentage}%)` : 'none'}" 
-      id="myCanvas" 
-      ref="MyCanvas">
+      transform: hasWindowOverflow ? `scale(${scalePercentage}%)` : 'none'
+    }" id="myCanvas" ref="MyCanvas">
 
       <!--This is the canvas slot containing a draggable component that loops 
       through the cards array ---------------------------------------------->
-      <draggable 
-      v-if="cards.length>0"
-      id="draggable" 
-      v-model="cards" 
-      item-key="id"
-      @drag="onDrag">
+      <draggable v-if="cards.length > 0" id="draggable" v-model="cards" item-key="id" @drag="onDrag">
         <template #item="{ element: card }">
-          <myCard :card-prop="card"/>
+          <myCard :card-prop="card" />
         </template>
       </draggable>
 
       <div id="emptyState" v-else>
         <h2>Canvas is empty</h2>
-        <h4 :canvasSize>Canvas size: {{canvasSize.width}} x {{ canvasSize.height }} pixels.</h4>
+        <h4 :canvasSize>Canvas size: {{ canvasSize.width }} x {{ canvasSize.height }} pixels.</h4>
         <p> Add some cards using the dropdown above</p>
       </div>
 
@@ -231,7 +220,7 @@ export default {
 <style scoped>
 /*This is all the styling, not too important now, will rearrange later */
 
-#emptyState{
+#emptyState {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -299,5 +288,4 @@ h1 {
   color: #f02626;
   line-height: 2em;
 }
-
 </style>

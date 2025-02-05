@@ -38,37 +38,13 @@ export default {
 
 <template>
   <div id="wrapper">
-    <v-number-input
-    :reverse="false"
-    controlVariant="default"
-    label="Width (px)"
-    :hideInput="false"
-    inset
-    variant="outlined"
-    v-model="width"
-    id="input-width"
-    :style="{'width': '200px'}"
-    density="comfortable"
-    bg-color="white"
-    hide-details
-    color="#2E5A78"
-    ></v-number-input>
+    <v-number-input :reverse="false" controlVariant="default" label="Width (px)" :hideInput="false" inset
+      variant="outlined" v-model="width" id="input-width" :style="{ 'width': '200px' }" density="comfortable"
+      bg-color="white" hide-details color="#2E5A78"></v-number-input>
 
-    <v-number-input
-    :reverse="false"
-    controlVariant="default"
-    label="Height (px)"
-    :hideInput="false"
-    inset
-    variant="outlined"
-    v-model="height"
-    id="input-height"
-    :style="{'width': '200px'}"
-    density="comfortable"
-    bg-color="white"
-    hide-details
-    color="#2E5A78"
-    ></v-number-input>
+    <v-number-input :reverse="false" controlVariant="default" label="Height (px)" :hideInput="false" inset
+      variant="outlined" v-model="height" id="input-height" :style="{ 'width': '200px' }" density="comfortable"
+      bg-color="white" hide-details color="#2E5A78"></v-number-input>
 
     <button @click="onClick">Set Dimensions</button>
   </div>
@@ -95,13 +71,19 @@ button {
   padding: 0rem 1rem;
   border-radius: 3px;
   font-size: 14px;
-  height: 47px;
+  height: 48px;
   text-wrap: nowrap;
 }
 
-h1, h2, h3, h4, h5, h6, p, li, button{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+button {
   color: #5E5E5E;
 }
-
-
 </style>
