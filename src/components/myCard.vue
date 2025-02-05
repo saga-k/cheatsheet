@@ -143,7 +143,7 @@ export default {
 
     <div id="layout">
       <div id="firstRow">
-          <h3 :style="{'color': selectedTextColor || '#414141'}">{{ cardTitle }}</h3>
+          <h3 :style="{'color': selectedTextColor}">{{ cardTitle }}</h3>
 
           <div id="icons">
           <button id="bgColorButton"
@@ -193,7 +193,7 @@ export default {
       </div>
         <p 
         v-if="description !== null"
-        :style="{'color': selectedTextColor || '#5E5E5E'}"
+        :style="{'color': selectedTextColor}"
         >{{ description }}</p>
       <div 
       id="codeBlock"
@@ -214,14 +214,6 @@ section {
   display: flex;
   justify-content: flex-end;
   gap: 0.2rem;
-}
-
-p {
-  font-size: 14px;
-}
-
-code {
-  font-size: 14px;
 }
 
 #codeBlock {
@@ -292,8 +284,5 @@ code {
   color: white;
 }
 
-h1, h2, h3, h4, h5, h6, p, li, button, code{
-  color: #414141;
-}
 
 </style>

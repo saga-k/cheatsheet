@@ -87,8 +87,4 @@ export default {
   background-color: #2E5A78;
   color: white;
 }
-
-h1, h2, h3, h4, h5, h6, p, li, button{
-  color: #5E5E5E;
-}
 </style>

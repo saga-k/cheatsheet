@@ -6,7 +6,7 @@ import myCard from "@/components/myCard.vue";
 import draggable from "vuedraggable";
 import html2canvas from "html2canvas";
 import JsFileDownloader from "js-file-downloader";
-
+import FancyButton from "@/components/FancyButton.vue";
 export default {
   name: "HomeView",
 
@@ -18,6 +18,7 @@ export default {
     MultiSelectDropdown,
     myCard,
     draggable,
+    FancyButton
   },
 
   //Data ----------------------------------------------------------------
@@ -165,6 +166,8 @@ export default {
 
   <article id="fullLayout">
 
+    <FancyButton></FancyButton>
+
     <!--This is where users selections are made ------------------------------->
     <div id="options-header">
       <h1>Create a custom Javascript cheat sheet</h1>
@@ -279,16 +282,6 @@ h1 {
   row-gap: 1rem;
 }
 
-button {
-  background-color: lightgrey;
-  width: fit-content;
-  height: min-content;
-  padding: 0rem 1rem;
-  border-radius: 3px;
-  font-size: 14px;
-  height: 47px;
-  text-wrap: nowrap;
-}
 
 #error {
   background-color: #ffe7e7;
@@ -307,7 +300,4 @@ button {
   line-height: 2em;
 }
 
-h1, h2, h3, h4, h5, h6, p, li, button{
-  color: #414141;
-}
 </style>
