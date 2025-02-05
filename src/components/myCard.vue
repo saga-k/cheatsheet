@@ -32,49 +32,52 @@ export default {
 
   methods: {
     toggleBgColorPicker() {
-      if(this.bgColorPicker === false){
-      this.bgColorPicker = true;} 
+      if (this.bgColorPicker === false) {
+        this.bgColorPicker = true;
+      }
       else {
         this.bgColorPicker = false;
       }
-      if(this.borderColorPicker){
+      if (this.borderColorPicker) {
         this.borderColorPicker = false
       }
-      if(this.textColorPicker){
+      if (this.textColorPicker) {
         this.textColorPicker = false
       }
     },
 
     toggleBorderColorPicker() {
-      if(this.borderColorPicker === false){
-      this.borderColorPicker = true;} 
+      if (this.borderColorPicker === false) {
+        this.borderColorPicker = true;
+      }
       else {
         this.borderColorPicker = false
       }
-      if(this.bgColorPicker){
+      if (this.bgColorPicker) {
         this.bgColorPicker = false
       }
-      if(this.textColorPicker){
+      if (this.textColorPicker) {
         this.textColorPicker = false
       }
     },
 
     toggleTextColorPicker() {
-      if(this.textColorPicker === false){
-      this.textColorPicker = true;} 
+      if (this.textColorPicker === false) {
+        this.textColorPicker = true;
+      }
       else {
         this.textColorPicker = false
       }
-      if(this.bgColorPicker){
+      if (this.bgColorPicker) {
         this.bgColorPicker = false
       }
-      if(this.borderColorPicker){
+      if (this.borderColorPicker) {
         this.borderColorPicker = false
       }
     },
 
-    closeOverlay(event){
-      if(event.key === 'Escape' || event.key === 'enter'){
+    closeOverlay(event) {
+      if (event.key === 'Escape' || event.key === 'enter') {
         this.textColorPicker = false
         this.bgColorPicker = false
         this.borderColorPicker = false
@@ -85,120 +88,65 @@ export default {
 </script>
 
 <template>
-  
-  <section
-  v-bind:style="
-  {'background-color' : selectedBackgroundColor || '#eff3f6',
-    'border-color': selectedBorderColor || '#c9c9c9'
-  }"
-  >
 
-    <div class="overlay"
-      v-if="bgColorPicker === true">
+  <section v-bind:style="{
+    'background-color': selectedBackgroundColor || '#eff3f6',
+    'border-color': selectedBorderColor || '#c9c9c9'
+  }">
+
+    <div class="overlay" v-if="bgColorPicker === true">
       <div class="colorPickerTitle">
         <h4>Select Background Color</h4>
       </div>
-      <v-color-picker  
-      hide-canvas
-      show-swatches
-      id="bgColorPicker"
-      v-model="selectedBackgroundColor" 
-      mode="hex"
-      elevation="0"
-      >
+      <v-color-picker hide-canvas show-swatches id="bgColorPicker" v-model="selectedBackgroundColor" mode="hex"
+        elevation="0">
       </v-color-picker>
     </div>
 
-    <div class="overlay"
-    v-if="borderColorPicker === true" >
+    <div class="overlay" v-if="borderColorPicker === true">
       <div class="colorPickerTitle">
         <h4>Select Border Color</h4>
       </div>
-      <v-color-picker 
-      hide-canvas
-      show-swatches
-      id="borderColorPicker"
-      v-model="selectedBorderColor" 
-      mode="hex"
-      elevation="0"
-      >
+      <v-color-picker hide-canvas show-swatches id="borderColorPicker" v-model="selectedBorderColor" mode="hex"
+        elevation="0">
       </v-color-picker>
     </div>
 
-    <div class="overlay"
-    v-if="textColorPicker === true" >
+    <div class="overlay" v-if="textColorPicker === true">
       <div class="colorPickerTitle">
         <h4>Select Text Color</h4>
       </div>
-      <v-color-picker 
-      hide-canvas
-      show-swatches
-      id="textColorPicker"
-      v-model="selectedTextColor" 
-      mode="hex"
-      elevation="0"
-      >
+      <v-color-picker hide-canvas show-swatches id="textColorPicker" v-model="selectedTextColor" mode="hex"
+        elevation="0">
       </v-color-picker>
     </div>
 
     <div id="layout">
       <div id="firstRow">
-          <h3 :style="{'color': selectedTextColor}">{{ cardTitle }}</h3>
+        <h3 :style="{ 'color': selectedTextColor }">{{ cardTitle }}</h3>
 
-          <div id="icons">
-          <button id="bgColorButton"
-          class="colorButton"
-          @click="toggleBgColorPicker"
-          >
-          <font-awesome-icon
-          v-if="bgColorPicker === false"
-          id="fillIcon" :icon="['fas', 'palette']" />
-          <font-awesome-icon 
-          v-else
-          id="borderIcon" 
-          :icon="['fas', 'times']"
-          :style="{'color': 'white'}"
-          />
+        <div id="icons">
+          <button id="bgColorButton" class="colorButton" @click="toggleBgColorPicker">
+            <font-awesome-icon v-if="bgColorPicker === false" id="fillIcon" :icon="['fas', 'palette']" />
+            <font-awesome-icon v-else id="borderIcon" :icon="['fas', 'times']" :style="{ 'color': 'white' }" />
           </button>
 
-          <button id="borderColorButton" 
-          class="colorButton" 
-          @click="toggleBorderColorPicker">
+          <button id="borderColorButton" class="colorButton" @click="toggleBorderColorPicker">
 
-          <font-awesome-icon 
-          v-if="borderColorPicker === false"
-          id="borderIcon" 
-          :icon="['fas', 'palette']" />
+            <font-awesome-icon v-if="borderColorPicker === false" id="borderIcon" :icon="['fas', 'palette']" />
 
-          <font-awesome-icon 
-          v-else
-          id="borderIcon" 
-          :icon="['fas', 'times']" />
-        </button>
-        
-        <button 
-        id="textColorButton" 
-        class="colorButton" 
-        @click="toggleTextColorPicker">
-        <strong v-if="textColorPicker === false" >T</strong>
-        <font-awesome-icon 
-          v-else
-          id="borderIcon" 
-          :icon="['fas', 'times']"
-          :style="{'color': 'white'}"
-          />
-        </button>
-      </div>
+            <font-awesome-icon v-else id="borderIcon" :icon="['fas', 'times']" />
+          </button>
+
+          <button id="textColorButton" class="colorButton" @click="toggleTextColorPicker">
+            <strong v-if="textColorPicker === false">T</strong>
+            <font-awesome-icon v-else id="borderIcon" :icon="['fas', 'times']" :style="{ 'color': 'white' }" />
+          </button>
+        </div>
 
       </div>
-        <p 
-        v-if="description !== null"
-        :style="{'color': selectedTextColor}"
-        >{{ description }}</p>
-      <div 
-      id="codeBlock"
-      :style="{'border-color': selectedBorderColor || '#c9c9c9'}"
-      >
+      <p v-if="description !== null" :style="{ 'color': selectedTextColor }">{{ description }}</p>
+      <div id="codeBlock" :style="{ 'border-color': selectedBorderColor || '#c9c9c9' }">
         <pre><code>{{ code }}</code></pre>
       </div>
     </div>
@@ -223,66 +171,65 @@ section {
   border: solid 1px;
 }
 
-.overlay{
-  position:absolute;
+.overlay {
+  position: absolute;
   margin-top: 2rem;
   z-index: 1;
-  box-shadow: 0px 0px 34px 8px rgba(0,0,0,0.19);
+  box-shadow: 0px 0px 34px 8px rgba(0, 0, 0, 0.19);
   border-radius: 5px;
   background-color: white;
 }
 
-#layout{
+#layout {
   flex-grow: 1;
 }
 
-#icons{
+#icons {
   display: flex;
   gap: 1rem;
 }
 
-.colorButton{
+.colorButton {
   height: 24px;
   width: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 2px;
-  &:focus{
+
+  &:focus {
     outline: none;
   }
 }
 
-#firstRow{
+#firstRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.colorPickerTitle{
+.colorPickerTitle {
   padding: 0.5rem;
 }
 
-#fillIcon{
+#fillIcon {
   color: white;
 }
 
-#bgColorButton{
+#bgColorButton {
   background-color: #2E5A78
 }
 
-#borderIcon{
+#borderIcon {
   color: #2E5A78;
 }
 
-#borderColorButton{
+#borderColorButton {
   border: solid #2E5A78 1px;
 }
 
-#textColorButton{
+#textColorButton {
   background-color: #2E5A78;
   color: white;
 }
-
-
 </style>
