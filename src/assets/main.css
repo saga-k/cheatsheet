@@ -8,18 +8,19 @@ body {
   background-color: #eff3f6;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-li,
-button,
-code {
-  color: #626262
+@font-face {
+  font-family: DmSans;
+  src: url(src/DM_Sans/DMSans-VariableFont_opsz,wght.ttf);
 }
+
+h1{
+  color: black;
+  font-family: DmSans, sans-serif;
+  font-weight: 700;
+  font-size: 60px;
+  max-width: 700px;
+}
+
 
 p,
 code,
@@ -28,12 +29,17 @@ button {
 }
 
 button {
-  background-color: lightgrey;
-  width: fit-content;
-  height: min-content;
-  padding: 0rem 1rem;
-  border-radius: 3px;
   font-size: 14px !important;
   height: 47px;
   text-wrap: nowrap;
+}
+
+.basicButton{
+  font-size: 14px !important;
+  height: 47px;
+  width: 170px;
+  border-radius: 50px;
+  text-wrap: nowrap; 
+  background-color: black;
+  color: white;
 }

@@ -65,26 +65,16 @@ export default {
 </script>
 
 <template>
-  <v-autocomplete
-    label="choosePrinciple"
-    :items="titles"
-    v-model="selectedTitles"
-    chips
-    multiple
-    closable-chips
-    density="comfortable"
-    variant="outlined"
-    bg-color="white"
-    color="#2E5A78"
-  >
+  <v-autocomplete label="choosePrinciple" :items="titles" v-model="selectedTitles" chips multiple closable-chips
+    density="comfortable" variant="outlined" bg-color="white" color="black">
     <v-list-item>{{ titles }}</v-list-item>
   </v-autocomplete>
 </template>
 
 <style scoped>
-
+/*Chip selector
 ::v-deep(.v-chip) {
   background-color: #2E5A78;
   color: white;
-}
+}*/
 </style>

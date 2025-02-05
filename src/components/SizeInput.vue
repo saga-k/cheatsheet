@@ -46,7 +46,7 @@ export default {
       variant="outlined" v-model="height" id="input-height" :style="{ 'width': '200px' }" density="comfortable"
       bg-color="white" hide-details color="#2E5A78"></v-number-input>
 
-    <button @click="onClick">Set Dimensions</button>
+    <button class="basicButton" @click="onClick">Set Dimensions</button>
   </div>
 </template>
 
@@ -62,28 +62,5 @@ input {
   border: 1px solid #c9c9c9;
   border-radius: 3px;
   padding: 0.3rem;
-}
-
-button {
-  background-color: lightgrey;
-  width: fit-content;
-  height: min-content;
-  padding: 0rem 1rem;
-  border-radius: 3px;
-  font-size: 14px;
-  height: 48px;
-  text-wrap: nowrap;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-li,
-button {
-  color: #5E5E5E;
 }
 </style>
