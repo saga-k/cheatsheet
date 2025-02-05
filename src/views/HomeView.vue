@@ -174,9 +174,10 @@ export default {
 
       <!--Input fields and buttons ---------------->
       <div id="firstRow">
-        <SizeInput @emitSize="updateCanvasSize" />
-        <!--Button here ---------------->
-        <FancyButton @clicked="createImage">Download Image</FancyButton>
+        <SizeInput @emitSize="updateCanvasSize">
+          <!--Button here ---------------->
+          <FancyButton @clicked="createImage">Download Image</FancyButton>
+        </SizeInput>
       </div>
 
       <!--Multiselect dropdown here ---------------->
@@ -219,6 +220,10 @@ export default {
 
 <style scoped>
 /*This is all the styling, not too important now, will rearrange later */
+#firstRow {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 
 #emptyState {
   display: flex;
@@ -240,20 +245,10 @@ export default {
   z-index: 1;
 }
 
-#options-header {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
+
 
 h1 {
   line-height: 1em;
-}
-
-#firstRow {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
 }
 
 #myCanvas {
