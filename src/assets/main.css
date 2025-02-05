@@ -23,12 +23,25 @@ h1{
   margin-bottom: 2rem;
 }
 
+h2{
+  font-family: DmSans, sans-serif;
+  font-size: 36px;
+  letter-spacing: -0.5px;
+}
+
+h4{
+  font-family: DmSans, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}
+
 
 p,
-code,
-button {
-  font-size: 14;
+button,
+code {
+  font-size: 14px;
 }
+
 
 button {
   font-size: 14px !important;

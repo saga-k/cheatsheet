@@ -121,7 +121,7 @@ export default {
       </v-color-picker>
     </div>
 
-    <div id="layout">
+    <div id="cardLayout">
       <div id="firstRow">
         <h3 :style="{ 'color': selectedTextColor }">{{ cardTitle }}</h3>
 
@@ -190,7 +190,7 @@ section {
   background-color: white;
 }
 
-#layout {
+#cardLayout {
   flex-grow: 1;
 }
 
@@ -225,22 +225,4 @@ section {
 #borderColorButton {
   border: solid 1px;
 }
-
-/*
-#fillIcon {
-  color: white;
-}
-
-#bgColorButton {
-  background-color: #2E5A78
-}
-
-#borderColorButton {
-  border: solid #2E5A78 1px;
-}
-
-#textColorButton {
-  background-color: #2E5A78;
-  color: white;
-}*/
 </style>

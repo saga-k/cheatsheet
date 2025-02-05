@@ -205,6 +205,7 @@ export default {
         </template>
       </draggable>
 
+      <!--Canvas empty state here-------------------------------------------->
       <div id="emptyState" v-else>
         <h2>Canvas is empty</h2>
         <h4 :canvasSize>Canvas size: {{ canvasSize.width }} x {{ canvasSize.height }} pixels.</h4>
@@ -219,7 +220,6 @@ export default {
 
 
 <style scoped>
-/*This is all the styling, not too important now, will rearrange later */
 #firstRow {
   margin-top: 20px;
   margin-bottom: 20px;
