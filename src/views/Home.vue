@@ -7,6 +7,7 @@ import draggable from "vuedraggable";
 import html2canvas from "html2canvas";
 import JsFileDownloader from "js-file-downloader";
 import FancyButton from "@/components/FancyButton.vue";
+
 export default {
   name: "HomeView",
 
