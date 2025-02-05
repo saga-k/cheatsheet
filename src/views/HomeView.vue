@@ -236,8 +236,6 @@ export default {
   height: 100%;
   padding: 20px;
   padding-bottom: 60px;
-  position: relative;
-  z-index: 0;
 }
 
 #myCanvas {

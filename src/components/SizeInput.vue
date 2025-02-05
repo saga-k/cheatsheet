@@ -10,7 +10,7 @@ export default {
 
   data() {
     return {
-      width: 1400,
+      width: 1440,
       height: 900,
     };
   },

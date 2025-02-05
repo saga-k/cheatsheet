@@ -126,21 +126,31 @@ export default {
         <h3 :style="{ 'color': selectedTextColor }">{{ cardTitle }}</h3>
 
         <div id="icons">
-          <button id="bgColorButton" class="colorButton" @click="toggleBgColorPicker">
-            <font-awesome-icon v-if="bgColorPicker === false" id="fillIcon" :icon="['fas', 'palette']" />
-            <font-awesome-icon v-else id="borderIcon" :icon="['fas', 'times']" :style="{ 'color': 'white' }" />
+          <button id="bgColorButton" class="colorButton" @click="toggleBgColorPicker"
+            :style="{ 'backgroundColor': selectedTextColor || 'black' }">
+
+            <font-awesome-icon v-if="bgColorPicker === false" id="fillIcon" :icon="['fas', 'palette']"
+              :style="{ 'color': selectedBackgroundColor || 'white' }" />
+
+            <font-awesome-icon v-else id="borderIcon" :icon="['fas', 'times']"
+              :style="{ 'color': selectedBackgroundColor || 'white' }" />
           </button>
 
-          <button id="borderColorButton" class="colorButton" @click="toggleBorderColorPicker">
+          <button id="borderColorButton" class="colorButton" @click="toggleBorderColorPicker"
+            :style="{ 'border-color': selectedTextColor || 'black' }">
 
-            <font-awesome-icon v-if="borderColorPicker === false" id="borderIcon" :icon="['fas', 'palette']" />
+            <font-awesome-icon v-if="borderColorPicker === false" id="borderIcon" :icon="['fas', 'palette']"
+              :style="{ 'color': selectedTextColor || 'black' }" />
 
-            <font-awesome-icon v-else id="borderIcon" :icon="['fas', 'times']" />
+            <font-awesome-icon v-else id="borderIcon" :icon="['fas', 'times']"
+              :style="{ 'color': selectedTextColor || 'black' }" />
           </button>
 
-          <button id="textColorButton" class="colorButton" @click="toggleTextColorPicker">
-            <strong v-if="textColorPicker === false">T</strong>
-            <font-awesome-icon v-else id="borderIcon" :icon="['fas', 'times']" :style="{ 'color': 'white' }" />
+          <button id="textColorButton" class="colorButton" @click="toggleTextColorPicker"
+            :style="{ 'backgroundColor': selectedTextColor || 'black' }">
+            <strong v-if="textColorPicker === false" :style="{ 'color': selectedBackgroundColor || 'white' }">T</strong>
+            <font-awesome-icon v-else class="closeIcon" :icon="['fas', 'times']"
+              :style="{ 'color': selectedBackgroundColor || 'white' }" />
           </button>
         </div>
 
@@ -212,16 +222,17 @@ section {
   padding: 0.5rem;
 }
 
+#borderColorButton {
+  border: solid 1px;
+}
+
+/*
 #fillIcon {
   color: white;
 }
 
 #bgColorButton {
   background-color: #2E5A78
-}
-
-#borderIcon {
-  color: #2E5A78;
 }
 
 #borderColorButton {
@@ -231,5 +242,5 @@ section {
 #textColorButton {
   background-color: #2E5A78;
   color: white;
-}
+}*/
 </style>
