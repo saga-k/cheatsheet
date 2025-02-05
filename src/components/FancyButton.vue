@@ -6,7 +6,7 @@ export default{
 
 <template>
   <div id='container'>
-    <div></div>
+    <div id='purple' class='fill'></div>
   </div>
 
 <button id='fancyButton'>
@@ -37,8 +37,13 @@ export default{
   height: 40px;
   width: 100px;
   border: solid black 1px;
-  margin: 2rem
+  margin: 2rem;
 }
+
+.fill{
+  width: 
+}
+
 </style>
 
 7px -5px 0px 0px #4B0082, 
