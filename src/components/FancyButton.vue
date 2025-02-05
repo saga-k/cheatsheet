@@ -33,7 +33,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 150px;
+  width: 200px;
   height: 48px;
 }
 
@@ -41,12 +41,14 @@ export default {
   background-color: white;
   position: absolute;
   z-index: 1;
+  width: 170px;
+  border-radius: 50px;
 }
 
 #container {
   height: 35px;
-  width: 100px;
-  border: solid black 1px;
+  width: 160px;
+  border-radius: 50px;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
 }
@@ -61,6 +63,7 @@ export default {
   grid-column: 1;
   background-color: #4B0082;
   box-shadow: -5px 0px 20px 10px #4B0082;
+  border-radius: 50px 0px 0 50px;
 }
 
 #blue {
@@ -91,5 +94,6 @@ export default {
   grid-column: 6;
   background-color: #FF0000;
   box-shadow: 5px 0px 20px 10px #FF0000;
+  border-radius: 0px 50px 50px 0px;
 }
 </style>
