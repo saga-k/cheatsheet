@@ -17,6 +17,9 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { faExpand } from '@fortawesome/free-solid-svg-icons'
 import { faObjectGroup } from '@fortawesome/free-solid-svg-icons'
 import { faFileArrowDown } from '@fortawesome/free-solid-svg-icons'
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 
 library.add(faPalette)
@@ -24,6 +27,9 @@ library.add(faTimes)
 library.add(faExpand)
 library.add(faObjectGroup)
 library.add(faFileArrowDown)
+library.add(faLinkedin)
+library.add(faGithub)
+library.add(faEnvelope)
 
 
 app.component('font-awesome-icon', FontAwesomeIcon)

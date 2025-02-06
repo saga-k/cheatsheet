@@ -71,7 +71,17 @@ export default {
     <section id="whyThisApp">
       <h2>Why i created this app</h2>
       <div id="aboutWrapper">
-        <img id="profilePic" src="../assets/179804923.jpeg" />
+        <div id="picAndIcons">
+          <img id="profilePic" src="../assets/179804923.jpeg" alt="Saga Krüsell" />
+          <div id="icons">
+            <a href="https://www.linkedin.com/in/sagakrusell/"><font-awesome-icon class="fontAwesome"
+                :icon="['fab', 'linkedin']" style="color: #000000;" /></a>
+            <a href="https://github.com/saga-k"><font-awesome-icon class="fontAwesome" :icon="['fab', 'github']"
+                style="color: #000000;" /></a>
+            <a href="mailto:sagakrusell@gmail.com"><font-awesome-icon class="fontAwesome" :icon="['fas', 'envelope']"
+                style="color: #000000;" /></a>
+          </div>
+        </div>
         <div id="paragraphsWrapper">
           <p>Hi, I’m Saga and I’m a frontend developer student. When i started learning Javascript I got tired of
             constantly
@@ -185,8 +195,22 @@ p {
 }
 
 .fontAwesome {
-  scale: 1.5;
+  font-size: 28px;
 }
+
+#picAndIcons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#icons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
 
 @media screen and (max-width: 850px) {
   #aboutWrapper {
