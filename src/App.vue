@@ -1,13 +1,10 @@
 <script setup>
 import { RouterView } from "vue-router";
+import FancyNavBar from "./components/FancyNavBar.vue";
 </script>
 
 
 <template>
-  <nav>
-    <RouterLink to="/">Generator</RouterLink>
-    <routerLink to="about">About</routerLink>
-  </nav>
-
+  <FancyNavBar></FancyNavBar>
   <RouterView />
 </template>

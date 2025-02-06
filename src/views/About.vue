@@ -1,4 +1,5 @@
 <script>
+
 </script>
 <template>
   <article id="fullLayout">
@@ -58,7 +59,33 @@
             export process.</p>
         </div>
       </div>
+    </section>
 
+    <section id="whyThisApp">
+      <h2>Why i created this app</h2>
+      <div id="aboutWrapper">
+        <img id="profilePic" src="../assets/179804923.jpeg" />
+        <div id="paragraphsWrapper">
+          <p>Hi, I’m Saga and I’m a frontend developer student. When i started learning Javascript I got tired of
+            constantly
+            breaking my workflow to Google simple things—where parentheses go, what methods are available, or quick
+            syntax
+            refreshers. Most cheat sheets I found online were cluttered with too much information, making it faster to
+            just
+            check MDN. But then I thought—why not build something better, while also learning a new framework?</p>
+          <p>
+            I wanted a tool that wasn’t just functional but also well-designed, easy to navigate, and adaptable to
+            different
+            needs. The biggest challenge was making the layout flexible enough to handle any canvas size and differently
+            sized cards while keeping everything structured and readable. I placed a lot of focus on creating a clean
+            and
+            intuitive UI — because bad design shouldn’t get in the way of learning.
+            This app is the result. It helps me code more, copy-paste less, and keep essential knowledge within reach.
+            Hopefully, it does the same for you.
+
+            PS. More cards, concepts, languages and frameworks on it’s way :)</p>
+        </div>
+      </div>
     </section>
 
   </article>
@@ -72,7 +99,7 @@
 }
 
 #heroCopy {
-  margin-top: 10rem;
+  margin-top: 7rem;
   margin-bottom: 10rem;
 }
 
@@ -99,7 +126,7 @@ p {
 #features {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .featureWrapper {
@@ -114,10 +141,42 @@ p {
 }
 
 .line {
-  height: 120px;
+  height: 100px;
   width: 1px;
   background-color: black;
   margin-left: 35px;
   margin-top: -1.5rem;
+}
+
+#whyThisApp {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 5rem;
+}
+
+#profilePic {
+  width: 250px;
+  height: 250px;
+  border-radius: 5px;
+}
+
+#aboutWrapper {
+  display: flex;
+  gap: 3rem;
+  justify-content: space-around;
+}
+
+#paragraphsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 850px) {
+  #aboutWrapper {
+    flex-direction: column;
+  }
+
 }
 </style>

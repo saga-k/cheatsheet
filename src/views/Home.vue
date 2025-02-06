@@ -9,7 +9,7 @@ import JsFileDownloader from "js-file-downloader";
 import FancyButton from "@/components/FancyButton.vue";
 
 export default {
-  name: "HomeView",
+  name: "Home",
 
   //Declare Components ----------------------------------------------------------
 
@@ -244,6 +244,7 @@ export default {
   height: 100%;
   padding: 20px;
   padding-bottom: 60px;
+  padding-top: 5rem;
 }
 
 #myCanvas {
