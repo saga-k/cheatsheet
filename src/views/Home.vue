@@ -78,7 +78,8 @@ export default {
 
     //Fetch the data
     async fetchData() {
-      const promise = await fetch("public/data.json");
+      const url = `${window.location.origin}/cheatsheet/data.json`
+      const promise = await fetch(url);
       const data = await promise.json();
       this.fetchedData = data;
       this.isFetched = true;
