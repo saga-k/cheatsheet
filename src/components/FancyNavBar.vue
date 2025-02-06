@@ -125,4 +125,11 @@ export default {
   font-size: 13px;
   text-align: center;
 }
+
+@media screen and (max-width: 500px) {
+  #whiteContainer {
+    justify-content: center;
+    padding-right: 0;
+  }
+}
 </style>

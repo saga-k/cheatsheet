@@ -104,4 +104,23 @@ export default {
     justify-self: center;
   }
 }
+
+@media screen and (max-width: 500px) {
+  #mainWrapper {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+    row-gap: 1.5rem;
+  }
+
+  #setSizeButton {
+    grid-column: 1;
+    justify-self: left;
+  }
+
+  #fancyButtonSlot {
+    grid-column: 1;
+    justify-self: left;
+  }
+}
 </style>

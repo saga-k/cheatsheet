@@ -101,4 +101,11 @@ export default {
   box-shadow: 5px 0px 20px 10px #FF0000;
   border-radius: 0px 50px 50px 0px;
 }
+
+@media screen and (max-width: 500px) {
+  #outerContainer {
+    margin-left: -12px;
+  }
+
+}
 </style>
