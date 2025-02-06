@@ -28,8 +28,8 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
 }
 
 #whiteContainer {
@@ -38,7 +38,6 @@ export default {
   justify-content: center;
   align-items: center;
   position: absolute;
-  z-index: 1;
   width: 60px;
   height: 60px;
   border-radius: 60px;
@@ -50,7 +49,8 @@ export default {
   border-radius: 50px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border: solid black 1px
+  border: solid black 1px;
+  z-index: -1;
 }
 
 .fill {

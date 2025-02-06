@@ -24,7 +24,7 @@ export default {
       <h2>Features</h2>
 
       <div class="featureWrapper">
-        <FancyIcon class="iconCanvas">
+        <FancyIcon>
           <font-awesome-icon class="fontAwesome" :icon="['fas', 'expand']" style="color: #000000;" />
         </FancyIcon>
         <div class="rightSide">
@@ -34,10 +34,8 @@ export default {
         </div>
       </div>
 
-      <div class="line"></div>
-
       <div class="featureWrapper">
-        <FancyIcon class="iconCanvas">
+        <FancyIcon>
           <font-awesome-icon class="fontAwesome" :icon="['fas', 'object-group']" style="color: #000000;" />
         </FancyIcon>
         <div class="rightSide">
@@ -47,10 +45,8 @@ export default {
         </div>
       </div>
 
-      <div class="line"></div>
-
       <div class="featureWrapper">
-        <FancyIcon class="iconCanvas">
+        <FancyIcon>
           <font-awesome-icon class="fontAwesome" :icon="['fas', 'palette']" style="color: #000000;" />
         </FancyIcon>
         <div class="rightSide">
@@ -61,10 +57,8 @@ export default {
         </div>
       </div>
 
-      <div class="line"></div>
-
       <div class="featureWrapper">
-        <FancyIcon class="iconCanvas">
+        <FancyIcon>
           <font-awesome-icon class="fontAwesome" :icon="['fas', 'file-arrow-down']" style="color: #000000;" />
         </FancyIcon>
         <div class="rightSide">
@@ -124,11 +118,7 @@ export default {
 }
 
 .iconCanvas {
-  height: 50px;
-  width: 50px;
-  border-radius: 50px;
-  background-color: darkgray;
-  margin-left: 10px;
+  display: block;
 }
 
 p {
@@ -142,12 +132,20 @@ p {
 #features {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 5rem;
 }
 
 .featureWrapper {
   display: flex;
   justify-content: space-between;
+}
+
+.featureWrapper p {
+  margin-left: 40px;
+}
+
+.featureWrapper h3 {
+  margin-left: 40px;
 }
 
 .rightSide {
@@ -158,10 +156,9 @@ p {
 
 .line {
   height: 100px;
-  width: 1px;
+  width: 60px;
   background-color: black;
-  margin-left: 35px;
-  margin-top: -1.5rem;
+
 }
 
 #whyThisApp {
