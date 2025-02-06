@@ -52,8 +52,7 @@ export default {
         <div class="rightSide">
           <h3>Color Customization</h3>
           <p>Make your cheat sheet visually appealing by customizing the colors of each card. Pick background colors,
-            text colors, and accent shades to match your style. Image suggestion: A preview of cards with different
-            color schemes applied. </p>
+            text colors, and accent shades to match your style. </p>
         </div>
       </div>
 
@@ -64,8 +63,7 @@ export default {
         <div class="rightSide">
           <h3>Export as PNG</h3>
           <p>Once you’re happy with your custom cheat sheet, export it as a high-quality PNG for easy access or
-            printing. Image suggestion: A download button with a PNG icon next to a cheat sheet design, showing the
-            export process.</p>
+            printing.</p>
         </div>
       </div>
     </section>
