@@ -78,7 +78,7 @@ export default {
 
     //Fetch the data
     async fetchData() {
-      const promise = await fetch("/data.json");
+      const promise = await fetch("public/data.json");
       const data = await promise.json();
       this.fetchedData = data;
       this.isFetched = true;
