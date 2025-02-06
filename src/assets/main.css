@@ -60,4 +60,10 @@ button {
   text-wrap: nowrap; 
   background-color: black;
   color: white;
+
+  &:hover{
+    color: black;
+    background-color: white;
+    border: solid 1.5px black;
+  }
 }

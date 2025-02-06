@@ -6,6 +6,9 @@ export default {
 </script>
 
 <template>
+  <div id="above">
+    <p>Please view this site in Chrome</p>
+  </div>
   <div id="outerContainer">
     <nav id="whiteContainer">
       <routerLink class="link" to="/">Generator</RouterLink>
@@ -27,7 +30,8 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%
+  width: 100%;
+  margin-top: 20px;
 }
 
 
@@ -40,7 +44,6 @@ export default {
 
 #whiteContainer {
   position: absolute;
-  top: 0;
   z-index: 1;
   width: 100%;
   height: 70px;
@@ -106,5 +109,20 @@ export default {
 
 .router-link-active {
   text-decoration: underline;
+}
+
+#above {
+  height: 20px;
+  width: 100%;
+  background-color: black;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+}
+
+#above p {
+  color: white;
+  font-size: 13px;
+  text-align: center;
 }
 </style>

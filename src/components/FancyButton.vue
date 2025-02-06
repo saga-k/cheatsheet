@@ -43,6 +43,11 @@ export default {
   z-index: 1;
   width: 170px;
   border-radius: 50px;
+
+  &:hover {
+    background-color: black;
+    color: white;
+  }
 }
 
 #container {
