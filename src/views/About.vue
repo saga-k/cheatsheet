@@ -23,7 +23,9 @@
             amount of information you want to display.</p>
         </div>
       </div>
+
       <div class="line"></div>
+
       <div class="featureWrapper">
         <div class="iconCanvas"></div>
         <div class="rightSide">
@@ -32,6 +34,31 @@
             as you need, and organize them in a way that works for you. </p>
         </div>
       </div>
+
+      <div class="line"></div>
+
+      <div class="featureWrapper">
+        <div class="iconCanvas"></div>
+        <div class="rightSide">
+          <h3>Color Customization</h3>
+          <p>Make your cheat sheet visually appealing by customizing the colors of each card. Pick background colors,
+            text colors, and accent shades to match your style. Image suggestion: A preview of cards with different
+            color schemes applied. </p>
+        </div>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="featureWrapper">
+        <div class="iconCanvas"></div>
+        <div class="rightSide">
+          <h3>Export as PNG</h3>
+          <p>Once you’re happy with your custom cheat sheet, export it as a high-quality PNG for easy access or
+            printing. Image suggestion: A download button with a PNG icon next to a cheat sheet design, showing the
+            export process.</p>
+        </div>
+      </div>
+
     </section>
 
   </article>
@@ -54,10 +81,11 @@
 }
 
 .iconCanvas {
-  height: 80px;
-  width: 80px;
+  height: 50px;
+  width: 50px;
   border-radius: 50px;
   background-color: darkgray;
+  margin-left: 10px;
 }
 
 p {
@@ -86,9 +114,10 @@ p {
 }
 
 .line {
-  height: 140px;
+  height: 120px;
   width: 1px;
   background-color: black;
-  margin-left: 40px;
+  margin-left: 35px;
+  margin-top: -1.5rem;
 }
 </style>
