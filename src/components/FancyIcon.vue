@@ -1,16 +1,17 @@
 <script>
 export default {
-  name: 'FancyNavBar',
+  name: 'FancyIcon'
 }
 
 </script>
 
 <template>
   <div id="outerContainer">
-    <nav id="whiteContainer">
-      <routerLink class="link" to="/">Generator</RouterLink>
-      <routerLink class="link" to="about">About</routerLink>
-    </nav>
+    <div id='whiteContainer'>
+      <slot>
+        icon
+      </slot>
+    </div>
     <div id='container'>
       <div id='purple' class='fill'></div>
       <div id='blue' class='fill'></div>
@@ -27,30 +28,29 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%
-}
-
-
-#container {
+  width: 50px;
   height: 50px;
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
 }
 
 #whiteContainer {
-  position: absolute;
-  top: 0;
-  z-index: 1;
-  width: 100%;
-  height: 70px;
   background-color: white;
   display: flex;
-  justify-content: flex-end;
-  gap: 3rem;
+  justify-content: center;
   align-items: center;
-  padding-right: 3rem;
+  position: absolute;
+  z-index: 1;
+  width: 60px;
+  height: 60px;
+  border-radius: 60px;
+}
 
+#container {
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: solid black 1px
 }
 
 .fill {
@@ -62,49 +62,40 @@ export default {
 #purple {
   grid-column: 1;
   background-color: #4B0082;
-  box-shadow: -10px 10px 30px 20px #4B0082;
+  box-shadow: 0px 0px 20px 10px #4B0082;
+  border-radius: 100% 0px 0 0px;
 }
 
 #blue {
   grid-column: 2;
   background-color: #0000FF;
-  box-shadow: -10px 10px 30px 20px #0000FF;
+  box-shadow: 0px 0px 20px 10px #0000FF;
 }
 
 #green {
   grid-column: 3;
   background-color: #00FF00;
-  box-shadow: -10px 10px 30px 20px #00FF00;
+  box-shadow: 0px 0px 20px 10px #00FF00;
+  border-radius: 0 100% 0 0px;
 }
 
 #yellow {
-  grid-column: 4;
+  grid-column: 1;
   background-color: #FFFF00;
-  box-shadow: -10px 10px 30px 20px #FFFF00;
+  box-shadow: 0px 0px 20px 10px #FFFF00;
+  border-radius: 0 0 0 100%;
 }
 
 #orange {
-  grid-column: 5;
+  grid-column: 2;
   background-color: #FF7F00;
-  box-shadow: -10px 10px 30px 20px #FF7F00;
+  box-shadow: 0px 0px 20px 10px #FF7F00;
 }
 
 #red {
-  grid-column: 6;
+  grid-column: 3;
   background-color: #FF0000;
-  box-shadow: -10px 10px 30px 20px #FF0000;
-}
-
-.link {
-  color: black;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-.router-link-active {
-  text-decoration: underline;
+  box-shadow: 5px 0px 20px 10px #FF0000;
+  border-radius: 0px 0px 100% 0px;
 }
 </style>

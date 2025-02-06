@@ -1,4 +1,11 @@
 <script>
+import FancyIcon from '@/components/FancyIcon.vue';
+export default {
+  name: 'about',
+  components: {
+    FancyIcon
+  }
+}
 
 </script>
 <template>
@@ -17,7 +24,9 @@
       <h2>Features</h2>
 
       <div class="featureWrapper">
-        <div class="iconCanvas"></div>
+        <FancyIcon class="iconCanvas">
+          <font-awesome-icon class="fontAwesome" :icon="['fas', 'expand']" style="color: #000000;" />
+        </FancyIcon>
         <div class="rightSide">
           <h3>Customizable Canvas Size</h3>
           <p>Start with the perfect canvas size for your cheat sheet. Choose dimensions that suit your style and the
@@ -28,7 +37,9 @@
       <div class="line"></div>
 
       <div class="featureWrapper">
-        <div class="iconCanvas"></div>
+        <FancyIcon class="iconCanvas">
+          <font-awesome-icon class="fontAwesome" :icon="['fas', 'object-group']" style="color: #000000;" />
+        </FancyIcon>
         <div class="rightSide">
           <h3>Add and Organize Cards</h3>
           <p>Choose from a variety of JavaScript concepts, and arrange them as cards on your canvas. Add as many cards
@@ -39,7 +50,9 @@
       <div class="line"></div>
 
       <div class="featureWrapper">
-        <div class="iconCanvas"></div>
+        <FancyIcon class="iconCanvas">
+          <font-awesome-icon class="fontAwesome" :icon="['fas', 'palette']" style="color: #000000;" />
+        </FancyIcon>
         <div class="rightSide">
           <h3>Color Customization</h3>
           <p>Make your cheat sheet visually appealing by customizing the colors of each card. Pick background colors,
@@ -51,7 +64,9 @@
       <div class="line"></div>
 
       <div class="featureWrapper">
-        <div class="iconCanvas"></div>
+        <FancyIcon class="iconCanvas">
+          <font-awesome-icon class="fontAwesome" :icon="['fas', 'file-arrow-down']" style="color: #000000;" />
+        </FancyIcon>
         <div class="rightSide">
           <h3>Export as PNG</h3>
           <p>Once you’re happy with your custom cheat sheet, export it as a high-quality PNG for easy access or
@@ -82,8 +97,9 @@
             intuitive UI — because bad design shouldn’t get in the way of learning.
             This app is the result. It helps me code more, copy-paste less, and keep essential knowledge within reach.
             Hopefully, it does the same for you.
-
-            PS. More cards, concepts, languages and frameworks on it’s way :)</p>
+            <br><br>
+            PS. More cards, concepts, languages and frameworks on it’s way :)
+          </p>
         </div>
       </div>
     </section>
@@ -171,6 +187,10 @@ p {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.fontAwesome {
+  scale: 1.5;
 }
 
 @media screen and (max-width: 850px) {

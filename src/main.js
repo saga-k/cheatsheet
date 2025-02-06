@@ -7,19 +7,25 @@ import './assets/main.css'
 const app = createApp(App)
 
 //Font Awesome ----------------------------------------------
-// Import FontAwesome
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-// Import the specific icons you want to use
+
 import { faPalette } from '@fortawesome/free-solid-svg-icons'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faExpand } from '@fortawesome/free-solid-svg-icons'
+import { faObjectGroup } from '@fortawesome/free-solid-svg-icons'
+import { faFileArrowDown } from '@fortawesome/free-solid-svg-icons'
 
-// Add the icons to the library
+
 library.add(faPalette)
 library.add(faTimes)
+library.add(faExpand)
+library.add(faObjectGroup)
+library.add(faFileArrowDown)
 
-// Register the FontAwesomeIcon component globally
+
 app.component('font-awesome-icon', FontAwesomeIcon)
 
 //Vuetify ----------------------------------------------
