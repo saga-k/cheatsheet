@@ -83,13 +83,16 @@ export default {
           </div>
         </div>
         <div id="paragraphsWrapper">
-          <p>Hi, I’m Saga and I’m a frontend developer student. When i started learning Javascript I got tired of
-            constantly
-            breaking my workflow to Google simple things—where parentheses go, what methods are available, or quick
-            syntax
-            refreshers. Most cheat sheets I found online were cluttered with too much information, making it faster to
-            just
-            check MDN. But then I thought—why not build something better, while also learning a new framework?</p>
+          <p>Hi, I'm Saga, and i'm a frontend developer student. When i first started learning JavaScript I often found
+            myself breaking my workflow to Google simple things—like where parentheses go, what methods are available,
+            or needing a quick reminder of syntax. The cheat sheets I found online were often too cluttered with
+            information, making it faster to check the MDN docs than use them. I also didn’t like how easy it was to
+            copy and paste code instead of writing it myself, which is essential for learning.
+
+            I initially thought about designing a cheat sheet for myself in Figma and using it as a desktop
+            background—just the main concepts that I needed to learn and use. But then I realized this could be useful
+            to others, too. So, I decided to build a website where anyone can select and organize the concepts they want
+            in a way that’s easy to access and helps them learn by writing, not just copying.</p>
           <p>
             I wanted a tool that wasn’t just functional but also well-designed, easy to navigate, and adaptable to
             different
