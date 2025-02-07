@@ -212,10 +212,45 @@ p {
 }
 
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 800px) {
   #aboutWrapper {
     flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
   }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  .pLarge {
+    font-size: 18px;
+  }
+
+  #fullLayout {
+    padding: 2rem;
+  }
+
+  #heroCopy {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .featureWrapper {
+    flex-direction: column;
+    justify-content: left;
+    gap: 2rem;
+  }
+
+  .rightSide h3,
+  .rightSide p {
+    margin: 0;
+  }
+
+  #features {
+    gap: 2rem;
+  }
+
 
 }
 </style>
