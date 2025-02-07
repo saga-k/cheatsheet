@@ -190,7 +190,8 @@ export default {
       </div>
 
       <!--Multiselect dropdown here ---------------->
-      <MultiSelectDropdown @cardAdded="addCard" @cardRemoved="removeCard" v-if="isFetched" :data-prop="fetchedData" />
+      <MultiSelectDropdown class="multiSelect" @cardAdded="addCard" @cardRemoved="removeCard" v-if="isFetched"
+        :data-prop="fetchedData" />
     </div>
 
     <!--This is the error message that is displayed if canvas has overlow ----->
@@ -222,6 +223,12 @@ export default {
       </div>
 
     </MyCanvas>
+
+    <p class="mobileOnly">This app lets you design and export your own JavaScript cheat sheets! To get the best
+      experience,
+      please visit
+      on a
+      desktop.</p>
 
   </article>
 
@@ -278,5 +285,33 @@ export default {
 #error h4 {
   color: #f02626;
   line-height: 2em;
+}
+
+.mobileOnly {
+  display: none;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 800px) {
+  #firstRow {
+    display: none;
+  }
+
+  .multiSelect {
+    display: none;
+  }
+
+  #myCanvas {
+    display: none;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  .mobileOnly {
+    display: block;
+  }
+
 }
 </style>
