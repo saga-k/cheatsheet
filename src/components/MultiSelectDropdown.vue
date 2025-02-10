@@ -7,6 +7,10 @@ export default {
       type: Array,
       required: true,
     },
+    titleProp: {
+      type: String,
+      required: true
+    }
   },
 
   data() {
@@ -16,6 +20,8 @@ export default {
       titles: [],
 
       selectedTitles: [],
+
+      mainTitle: this.titleProp
     };
   },
 
@@ -65,7 +71,7 @@ export default {
 </script>
 
 <template>
-  <v-autocomplete label="choosePrinciple" :items="titles" v-model="selectedTitles" chips multiple closable-chips
+  <v-autocomplete :label="`${mainTitle}`" :items="titles" v-model="selectedTitles" chips multiple closable-chips
     density="comfortable" variant="outlined" bg-color="white" color="black">
     <v-list-item>{{ titles }}</v-list-item>
   </v-autocomplete>
