@@ -38,3 +38,8 @@ Another challenge was figuring out how to handle cases where the user selects a 
 ## Continued Development
 
 I plan on adding more cards not only for JavaScript but also for frameworks like Vue, React, HTML, CSS, and Git. I’m also interested in improving the user experience by refining interactions and ensuring the app feels smooth and intuitive.
+
+## Live demo
+
+You can view the live site [here](https://saga-k.github.io/cheatsheet/).
+
