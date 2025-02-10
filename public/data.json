@@ -310,11 +310,13 @@
     "data":[
       {
         "id": 50,
-        "title": "testingTitle",
-        "code": "testingCode",
-        "description": "testingDescription"
-    }
+        "title": "Vue Instance",
+        "code": "import { createApp } from 'vue'\nimport App from './App.vue'\n\nconst app = createApp(App)\napp.mount('#app')",
+        "description": "Create a Vue app instance and mount it to a DOM element."
+      }
+      
     ]
+    
   }
   
 
