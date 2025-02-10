@@ -24,72 +24,14 @@ export default {
       code: this.cardProp.code,
       description: this.cardProp.description,
 
-      bgColorPicker: false,
       selectedBackgroundColor: null,
 
-      borderColorPicker: false,
       selectedBorderColor: null,
 
-      textColorPicker: false,
       selectedTextColor: null,
-    };
-  },
-
-  methods: {
-    toggleBgColorPicker() {
-      if (this.bgColorPicker === false) {
-        this.bgColorPicker = true;
-      }
-      else {
-        this.bgColorPicker = false;
-      }
-      if (this.borderColorPicker) {
-        this.borderColorPicker = false
-      }
-      if (this.textColorPicker) {
-        this.textColorPicker = false
-      }
-    },
-
-    toggleBorderColorPicker() {
-      if (this.borderColorPicker === false) {
-        this.borderColorPicker = true;
-      }
-      else {
-        this.borderColorPicker = false
-      }
-      if (this.bgColorPicker) {
-        this.bgColorPicker = false
-      }
-      if (this.textColorPicker) {
-        this.textColorPicker = false
-      }
-    },
-
-    toggleTextColorPicker() {
-      if (this.textColorPicker === false) {
-        this.textColorPicker = true;
-      }
-      else {
-        this.textColorPicker = false
-      }
-      if (this.bgColorPicker) {
-        this.bgColorPicker = false
-      }
-      if (this.borderColorPicker) {
-        this.borderColorPicker = false
-      }
-    },
-
-    closeOverlay(event) {
-      if (event.key === 'Escape' || event.key === 'enter') {
-        this.textColorPicker = false
-        this.bgColorPicker = false
-        this.borderColorPicker = false
-      }
     }
   }
-};
+}
 </script>
 
 <template>
@@ -99,63 +41,55 @@ export default {
     'border-color': selectedBorderColor || '#c9c9c9'
   }">
 
-    <div class="overlay" v-if="bgColorPicker === true">
-      <div class="colorPickerTitle">
-        <h4>Select Background Color</h4>
+    <v-overlay activator="#bgColorButton" location-strategy="connected">
+      <div class="overlayBG">
+        <div class="colorPickerTitle">
+          <h4>Select Background Color</h4>
+        </div>
+        <v-color-picker id="bgColorPicker" v-model="selectedBackgroundColor" mode="hex" elevation="0">
+        </v-color-picker>
       </div>
-      <v-color-picker hide-canvas show-swatches id="bgColorPicker" v-model="selectedBackgroundColor" mode="hex"
-        elevation="0">
-      </v-color-picker>
-    </div>
+    </v-overlay>
 
-    <div class="overlay" v-if="borderColorPicker === true">
-      <div class="colorPickerTitle">
-        <h4>Select Border Color</h4>
+    <v-overlay activator="#borderColorButton" location-strategy="connected">
+      <div class="overlayBG">
+        <div class="colorPickerTitle">
+          <h4>Select Border Color</h4>
+        </div>
+        <v-color-picker id="borderColorPicker" v-model="selectedBorderColor" mode="hex" elevation="0">
+        </v-color-picker>
       </div>
-      <v-color-picker hide-canvas show-swatches id="borderColorPicker" v-model="selectedBorderColor" mode="hex"
-        elevation="0">
-      </v-color-picker>
-    </div>
+    </v-overlay>
 
-    <div class="overlay" v-if="textColorPicker === true">
-      <div class="colorPickerTitle">
-        <h4>Select Text Color</h4>
+    <v-overlay activator="#textColorButton" location-strategy="connected">
+      <div class="overlayBG">
+        <div class="colorPickerTitle">
+          <h4>Select Text Color</h4>
+        </div>
+        <v-color-picker id="textColorPicker" v-model="selectedTextColor" mode="hex" elevation="0">
+        </v-color-picker>
       </div>
-      <v-color-picker hide-canvas show-swatches id="textColorPicker" v-model="selectedTextColor" mode="hex"
-        elevation="0">
-      </v-color-picker>
-    </div>
+    </v-overlay>
 
     <div id="cardLayout">
       <div id="firstRow">
         <h3 :style="{ 'color': selectedTextColor }">{{ cardTitle }}</h3>
 
         <div id="icons" v-if="hideIcons === false">
-          <button id="bgColorButton" class="colorButton" @click="toggleBgColorPicker"
-            :style="{ 'backgroundColor': selectedTextColor || 'black' }">
+          <button id="bgColorButton" class="colorButton" :style="{ 'backgroundColor': selectedTextColor || 'black' }">
 
-            <font-awesome-icon v-if="bgColorPicker === false" id="fillIcon" :icon="['fas', 'palette']"
-              :style="{ 'color': selectedBackgroundColor || 'white' }" />
-
-            <font-awesome-icon v-else id="borderIcon" :icon="['fas', 'times']"
+            <font-awesome-icon id="fillIcon" :icon="['fas', 'palette']"
               :style="{ 'color': selectedBackgroundColor || 'white' }" />
           </button>
 
-          <button id="borderColorButton" class="colorButton" @click="toggleBorderColorPicker"
-            :style="{ 'border-color': selectedTextColor || 'black' }">
+          <button id="borderColorButton" class="colorButton" :style="{ 'border-color': selectedTextColor || 'black' }">
 
-            <font-awesome-icon v-if="borderColorPicker === false" id="borderIcon" :icon="['fas', 'palette']"
-              :style="{ 'color': selectedTextColor || 'black' }" />
-
-            <font-awesome-icon v-else id="borderIcon" :icon="['fas', 'times']"
+            <font-awesome-icon id="borderIcon" :icon="['fas', 'palette']"
               :style="{ 'color': selectedTextColor || 'black' }" />
           </button>
 
-          <button id="textColorButton" class="colorButton" @click="toggleTextColorPicker"
-            :style="{ 'backgroundColor': selectedTextColor || 'black' }">
-            <strong v-if="textColorPicker === false" :style="{ 'color': selectedBackgroundColor || 'white' }">T</strong>
-            <font-awesome-icon v-else class="closeIcon" :icon="['fas', 'times']"
-              :style="{ 'color': selectedBackgroundColor || 'white' }" />
+          <button id="textColorButton" class="colorButton" :style="{ 'backgroundColor': selectedTextColor || 'black' }">
+            <strong :style="{ 'color': selectedBackgroundColor || 'white' }">T</strong>
           </button>
         </div>
 
@@ -192,7 +126,6 @@ section {
   z-index: 1;
   box-shadow: 0px 0px 34px 8px rgba(0, 0, 0, 0.19);
   border-radius: 5px;
-  background-color: white;
 }
 
 #cardLayout {
@@ -225,9 +158,14 @@ section {
 
 .colorPickerTitle {
   padding: 0.5rem;
+  background-color: white;
 }
 
 #borderColorButton {
   border: solid 1px;
+}
+
+.overlayBG {
+  background-color: white;
 }
 </style>
