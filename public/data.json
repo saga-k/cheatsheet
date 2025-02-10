@@ -313,7 +313,23 @@
         "title": "Vue Instance",
         "code": "import { createApp } from 'vue'\nimport App from './App.vue'\n\nconst app = createApp(App)\napp.mount('#app')",
         "description": "Create a Vue app instance and mount it to a DOM element."
-      }
+      },
+        {
+          "id": 51,
+          "title": "Data Binding",
+          "code": "<template>\n  <p>{{ message }}</p>\n</template>\n\n<script setup>\nimport { ref } from 'vue'\n\nconst message = ref('Hello, Vue!')\n</script>",
+          "description": "Bind data to the DOM using Vue's template syntax to dynamically display values."
+        },
+        {
+          "id": 52,
+          "title": "Vue Component Structure",
+          "code": "<template>\n  <p>{{ message }}</p>\n</template>\n\n<script setup>\nimport { ref } from 'vue'\n\nconst message = ref(\n  'Hello from the template!'\n)\n</script>\n\n<style scoped>\np {\n  color: blue;\n}\n</style>",
+          "description": "A Vue component consists of three main parts: the\ntemplate (HTML), script (JavaScript), and style\n(CSS). The script setup simplifies component logic,\nand scoped styles ensure the styles only apply to\nthis component."
+        }
+        
+        
+        
+      
       
     ]
     
