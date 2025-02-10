@@ -26,7 +26,11 @@ export default {
 
   data() {
     return {
-      fetchedData: null,
+      fetchedData: {
+        Javascript: null,
+        Vue: null,
+        React: null
+      },
 
       isFetched: false,
 
@@ -81,7 +85,8 @@ export default {
       const url = `${window.location.origin}/cheatsheet/data.json`
       const promise = await fetch(url);
       const data = await promise.json();
-      this.fetchedData = data;
+      console.log(data)
+      this.fetchedData.Javascript = data[0].data;
       this.isFetched = true;
     },
 
@@ -191,7 +196,7 @@ export default {
 
       <!--Multiselect dropdown here ---------------->
       <MultiSelectDropdown class="multiSelect" @cardAdded="addCard" @cardRemoved="removeCard" v-if="isFetched"
-        :data-prop="fetchedData" />
+        :data-prop="fetchedData.Javascript" />
     </div>
 
     <!--This is the error message that is displayed if canvas has overlow ----->
