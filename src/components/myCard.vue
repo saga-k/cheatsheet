@@ -171,4 +171,8 @@ section {
   box-shadow: 0px 0px 34px 8px rgba(0, 0, 0, 0.19);
   border-radius: 5px;
 }
+
+p {
+  max-width: 600px;
+}
 </style>

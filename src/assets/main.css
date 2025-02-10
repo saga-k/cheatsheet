@@ -40,6 +40,10 @@ code {
   font-size: 18px;
 }
 
+.description{
+  font-family: "roboto", sans-serif;
+}
+
 
 button {
   font-size: 14px !important;

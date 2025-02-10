@@ -323,9 +323,19 @@
         {
           "id": 52,
           "title": "Vue Component Structure",
-          "code": "<template>\n  <p>{{ message }}</p>\n</template>\n\n<script setup>\nimport { ref } from 'vue'\n\nconst message = ref(\n  'Hello from the template!'\n)\n</script>\n\n<style scoped>\np {\n  color: blue;\n}\n</style>",
-          "description": "A Vue component consists of three main parts: the\ntemplate (HTML), script (JavaScript), and style\n(CSS). The script setup simplifies component logic,\nand scoped styles ensure the styles only apply to\nthis component."
+          "code": "<template>\n  <p>{{ message }}</p>\n</template>\n\n<script setup>\n  import { ref } from 'vue'\n  const message = ref('Hello from the template!')\n</script>\n\n<style scoped>\n  p {\n    color: blue;\n  }\n</style>",
+          "description": "A Vue component consists of three main parts: the template (HTML), script (JavaScript), and style (CSS). The script setup simplifies component logic, and scoped styles ensure the styles only apply to this component."
+        },
+        {
+          "id": 53,
+          "title": "Variables and ref",
+          "code": "<template>\n  <p>{{ count }}</p>\n  <button @click=\"increment\">Increment</button>\n</template>\n\n<script setup>\nimport { ref } from 'vue'\n\nconst count = ref(0)\nconst increment = () => count.value++\n</script>",
+          "description": "Use `ref` to create reactive variables. Update their value with `.value`."
         }
+        
+        
+        
+        
         
         
         
