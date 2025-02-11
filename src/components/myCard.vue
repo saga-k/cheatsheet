@@ -135,6 +135,8 @@ section {
 #icons {
   display: flex;
   gap: 1rem;
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .colorButton {
