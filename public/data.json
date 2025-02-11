@@ -331,7 +331,156 @@
           "title": "Variables and ref",
           "code": "<template>\n  <p>{{ count }}</p>\n  <button @click=\"increment\">Increment</button>\n</template>\n\n<script setup>\nimport { ref } from 'vue'\n\nconst count = ref(0)\nconst increment = () => count.value++\n</script>",
           "description": "Use `ref` to create reactive variables. Update their value with `.value`."
+        },
+        {
+          "id": 54,
+          "title": "Computed Properties",
+          "code": "<template>\n  <p>{{ message }}</p>\n  <!-- Output: Hello -->\n  <p>Reversed: {{ reversedMessage }}</p>\n  <!-- Output: olleH -->\n</template>\n\n<script setup>\nimport { ref, computed } from 'vue'\n\nconst message = ref('Hello')\nconst reversedMessage = computed(() => \n  message.value.split('').reverse().join('')\n)\n</script>",
+          "description": "Use `computed` for values that depend on reactive data."
+        },
+        {
+          "id": 55,
+          "title": "Watchers",
+          "code": "<template>\n  <p>{{ count }}</p>\n  <button @click=\"increment\">Increment</button>\n</template>\n\n<script setup>\nimport { ref, watch } from 'vue'\n\nconst count = ref(0)\n\nwatch(count, (newCount, oldCount) => {\n  console.log(`Count changed from ${oldCount} to ${newCount}`)\n})\n\nconst increment = () => count.value++\n</script>",
+          "description": "Use `watch` to watch for changes in reactive variables."
+        },
+        {
+          "id": 56,
+          "title": "v-if and v-else",
+          "code": "<template>\n  <p v-if=\"isVisible\">Visible</p>\n  <p v-else>Hidden</p>\n  <button @click=\"toggleVisibility\">Toggle Visibility</button>\n</template>\n\n<script setup>\nimport { ref } from 'vue'\n\nconst isVisible = ref(true)\n\nconst toggleVisibility = () => {\n  isVisible.value = !isVisible.value\n}\n</script>",
+          "description": "Use `v-if` to conditionally render elements based on a reactive variable. `v-else` provides an alternative when the condition is false."
+        },
+        {
+          "id": 57,
+          "title": "v-for",
+          "code": "<template>\n  <ul>\n    <li v-for=\"item in items\" :key=\"item.id\">{{ item.name }}</li>\n  </ul>\n</template>\n\n<script setup>\nimport { ref } from 'vue'\n\nconst items = ref([\n  { id: 1, name: 'Item 1' },\n  { id: 2, name: 'Item 2' }\n])\n</script>",
+          "description": "Use `v-for` to loop through an array and render list items. Don't forget to provide a unique `key` for each item."
+        },
+        {
+          "id": 58,
+          "title": "v-bind",
+          "code": "<template>\n  <img v-bind:src=\"imageSrc\" alt=\"Image\" />\n  <button v-bind:disabled=\"isDisabled\">Click me</button>\n</template>\n\n<script setup>\nimport { ref } from 'vue'\n\nconst imageSrc = ref('https://example.com/image.jpg')\nconst isDisabled = ref(false)\n</script>",
+          "description": "Use `v-bind` to dynamically bind an attribute, like `src` or `disabled`, to a reactive variable."
+        },
+        {
+          "id": 59,
+          "title": "v-bind: style and class",
+          "code": "<template>\n  <div v-bind:style=\"{ color: textColor }\">\n    Styled Text\n  </div>\n  <div v-bind:class=\"{ active: isActive }\">\n    Styled with Class\n  </div>\n</template>\n\n<script setup>\nimport { ref } from 'vue'\n\nconst textColor = ref('blue')\nconst isActive = ref(true)\n</script>",
+          "description": "Use `v-bind:style` and `v-bind:class` with object syntax."
+        },
+        {
+          "id": 60,
+          "title": "v-model",
+          "code": "<template>\n  <input v-model=\"text\" />\n  <p>{{ text }}</p>\n</template>\n\n<script setup>\nimport { ref } from 'vue'\n\nconst text = ref('')\n</script>",
+          "description": "Use `v-model` for two-way data binding between an input and a variable."
+        },
+        {
+          "id": 61,
+          "title": "v-show",
+          "code": "<template>\n  <p v-show=\"isVisible\">This text is visible</p>\n  <button @click=\"toggleVisibility\">Toggle Visibility</button>\n</template>\n\n<script setup>\nimport { ref } from 'vue'\n\nconst isVisible = ref(true)\n\nconst toggleVisibility = () => {\n  isVisible.value = !isVisible.value\n}\n</script>",
+          "description": "Use `v-show` to conditionally display an element without removing it from the DOM."
+        },
+        {
+          "id": 62,
+          "title": "Props",
+          "code": "<template>\n  <!-- Parent Component -->\n  <ChildComponent :message=\"parentMessage\" />\n</template>\n\n<script setup>\nimport { ref } from 'vue'\nimport ChildComponent from './ChildComponent.vue'\n\nconst parentMessage = ref('Hello from Parent!')\n</script>\n\n<!-- Child Component -->\n<template>\n  <p>{{ message }}</p>\n</template>\n\n<script setup>\ndefineProps(['message'])\n</script>",
+          "description": "Use `props` to pass data from a parent component to a child component. The child can access the passed data using `defineProps`."
+        },
+        {
+          "id": 63,
+          "title": "Custom Events",
+          "code": "<template>\n  <!-- Parent Component -->\n  <ChildComponent @messageSent=\"handleMessage\" />\n  <p>{{ message }}</p>\n</template>\n\n<script setup>\nimport { ref } from 'vue'\nimport ChildComponent from './ChildComponent.vue'\n\nconst message = ref('')\n\nconst handleMessage = (msg) => {\n  message.value = msg\n}\n</script>\n\n<!-- Child Component -->\n<template>\n  <button @click=\"sendMessage\">Send Message</button>\n</template>\n\n<script setup>\ndefineEmits(['messageSent'])\n\nconst sendMessage = () => {\n  emit('messageSent', 'Hello from Child!')\n}\n</script>",
+          "description": "Use `emit` in the child component to send custom events, and use `@event` in the parent to listen for those events."
+        },
+        {
+          "id": 64,
+          "title": "Slots",
+          "code": "<template>\n  <!-- Parent Component -->\n  <ChildComponent>\n    <p>This is content passed from the parent!</p>\n  </ChildComponent>\n</template>\n\n<script setup>\nimport ChildComponent from './ChildComponent.vue'\n</script>\n\n<!-- Child Component -->\n<template>\n  <div>\n    <slot></slot>\n  </div>\n</template>",
+          "description": "Use `slot` in the child component to allow content to be passed from the parent."
+        },
+        {
+          "id": 65,
+          "title": "Prop Validation",
+          "code": "<script setup>\nimport { defineProps } from 'vue'\n\nconst props = defineProps({\n  age: {\n    type: Number,\n    required: true,\n    validator(value) {\n      return value >= 18\n    }\n  }\n})\n</script>",
+          "description": "Use prop validation to specify type, required status, and custom validators for props in Vue components."
+        },
+        {
+          "id": 66,
+          "title": "onMounted",
+          "code": "<script setup>\nimport { onMounted } from 'vue'\n\nonMounted(() => {\n  console.log('Component is mounted!')\n})\n</script>",
+          "description": "Use `onMounted` to run code when the component is mounted (after the DOM is created)."
+        },
+        {
+          "id": 67,
+          "title": "onUpdated",
+          "code": "<script setup>\nimport { onUpdated } from 'vue'\n\nonUpdated(() => {\n  console.log('Component has been updated!')\n})\n</script>",
+          "description": "Use `onUpdated` to run code whenever the component's reactive data changes and the component re-renders."
+        },
+        {
+          "id": 68,
+          "title": "onCreated",
+          "code": "<script setup>\nimport { onCreated } from 'vue'\n\nonCreated(() => {\n  console.log('Component is created!')\n})\n</script>",
+          "description": "Use `onCreated` to run code when the component is created, before it is mounted to the DOM."
+        },
+        {
+          "id": 69,
+          "title": "Router Setup",
+          "code": "<script setup>\nimport { createApp } from 'vue'\nimport { createRouter, createWebHistory } from 'vue-router'\n\n// Import components\nimport Home from './views/Home.vue'\nimport About from './views/About.vue'\n\n// Define routes\nconst routes = [\n  { path: '/', component: Home },\n  { path: '/about', component: About }\n]\n\n// Create router instance\nconst router = createRouter({\n  history: createWebHistory(),\n  routes,\n})\n\n// Create Vue app and use router\nconst app = createApp(App)\napp.use(router)\napp.mount('#app')</script>",
+          "description": "Set up Vue Router by defining routes and creating a router instance with `createRouter` and `createWebHistory`. Use `app.use(router)` to add it to your Vue app."
+        },
+        {
+          "id": 70,
+          "title": "Route Parameters",
+          "code": "<script setup>\nimport { createApp } from 'vue'\nimport { createRouter, createWebHistory } from 'vue-router'\nimport User from './views/User.vue'\n\n// Define routes with dynamic parameter\nconst routes = [\n  { path: '/user/:id', component: User }\n]\n\n// Create router instance\nconst router = createRouter({\n  history: createWebHistory(),\n  routes,\n})\n\n// Create Vue app and use router\nconst app = createApp(App)\napp.use(router)\napp.mount('#app')</script>",
+          "description": "Use dynamic route parameters (e.g. `/user/:id`) to pass data through the URL. Access the parameter in the component using `this.$route.params.id` or `useRoute().params.id`."
+        },
+        {
+          "id": 71,
+          "title": "Programmatic Navigation",
+          "code": "<script setup>\nimport { ref } from 'vue'\nimport { useRouter } from 'vue-router'\n\nconst router = useRouter()\nconst navigateToAbout = () => {\n  router.push('/about')\n}\n\nconst navigateToHome = () => {\n  router.push('/')\n}</script>",
+          "description": "Use `router.push()` or `router.replace()` for programmatic navigation between routes. This allows you to navigate from within your components, based on user actions or logic."
+        },
+        {
+          "id": 72,
+          "title": "router-link and router-view",
+          "code": "<template>\n  <!-- Using router-link for navigation -->\n  <router-link to='/'>Home</router-link>\n  <router-link to='/about'>About</router-link>\n\n  <!-- Where the routed components will render -->\n  <router-view></router-view>\n</template>",
+          "description": "Use `<router-link>` for navigation between routes and `<router-view>` to render matched components. `<router-link>` is the declarative way to navigate, while `<router-view>` is where the components will be displayed."
         }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
