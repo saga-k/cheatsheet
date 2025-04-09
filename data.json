@@ -445,59 +445,114 @@
           "title": "router-link and router-view",
           "code": "<template>\n  <!-- Using router-link for navigation -->\n  <router-link to='/'>Home</router-link>\n  <router-link to='/about'>About</router-link>\n\n  <!-- Where the routed components will render -->\n  <router-view></router-view>\n</template>",
           "description": "Use `<router-link>` for navigation between routes and `<router-view>` to render matched components. `<router-link>` is the declarative way to navigate, while `<router-view>` is where the components will be displayed."
+        }]
+    },
+    {
+      "language": "React",
+      "data": [
+        {
+          "id": 73,
+          "title": "React Component (Function)",
+          "code": "function Welcome() {\n  return <h1>Hello, React!</h1>;\n}\n\nexport default Welcome;",
+          "description": "A basic functional component in React returns JSX and can be reused like an HTML tag."
+        },
+        {
+          "id": 74,
+          "title": "JSX Syntax",
+          "code": "const element = <h1>Hello, JSX!</h1>;\n\nconst name = \"Alice\";\nconst greeting = <p>Hello, {name}!</p>;",
+          "description": "JSX allows you to write HTML-like syntax in JavaScript. Use curly braces to insert JavaScript expressions."
+        },
+        {
+          "id": 75,
+          "title": "Props",
+          "code": "function Greeting(props) {\n  return <h1>Hello, {props.name}!</h1>;\n}\n\n// Usage: <Greeting name=\"Alice\" />",
+          "description": "Props are used to pass data from parent to child components."
+        },
+        {
+          "id": 76,
+          "title": "useState Hook",
+          "code": "import { useState } from 'react';\n\nfunction Counter() {\n  const [count, setCount] = useState(0);\n\n  return (\n    <div>\n      <p>{count}</p>\n      <button onClick={() => setCount(count + 1)}>Increment</button>\n    </div>\n  );\n}",
+          "description": "The `useState` hook creates a reactive state variable in functional components."
+        },
+        {
+          "id": 77,
+          "title": "useEffect Hook",
+          "code": "import { useEffect } from 'react';\n\nuseEffect(() => {\n  console.log('Component mounted');\n\n  return () => {\n    console.log('Component unmounted');\n  };\n}, []);",
+          "description": "The `useEffect` hook runs side effects like fetching data or subscribing to events."
+        },
+        {
+          "id": 78,
+          "title": "Conditional Rendering",
+          "code": "function Status({ isOnline }) {\n  return <p>{isOnline ? 'Online' : 'Offline'}</p>;\n}",
+          "description": "Use JavaScript expressions and ternary operators to render content conditionally."
+        },
+        {
+          "id": 79,
+          "title": "Rendering Lists",
+          "code": "const items = ['Apple', 'Banana', 'Cherry'];\n\n<ul>\n  {items.map((item, index) => (\n    <li key={index}>{item}</li>\n  ))}\n</ul>",
+          "description": "Use `map()` to render a list of elements. Provide a unique `key` prop for each item."
+        },
+        {
+          "id": 80,
+          "title": "Event Handling",
+          "code": "function ClickButton() {\n  const handleClick = () => {\n    alert('Button clicked!');\n  };\n\n  return <button onClick={handleClick}>Click Me</button>;\n}",
+          "description": "React uses camelCase for event handlers, and you pass a function as the handler."
+        },
+        {
+          "id": 81,
+          "title": "Form Handling",
+          "code": "function Form() {\n  const [value, setValue] = useState('');\n\n  const handleChange = (e) => setValue(e.target.value);\n\n  return (\n    <form>\n      <input type=\"text\" value={value} onChange={handleChange} />\n      <p>{value}</p>\n    </form>\n  );\n}",
+          "description": "Use controlled components by syncing form input values with state."
+        },
+        {
+          "id": 82,
+          "title": "Passing Functions as Props",
+          "code": "function Child({ onClick }) {\n  return <button onClick={onClick}>Click Me</button>;\n}\n\nfunction Parent() {\n  const sayHi = () => alert('Hi!');\n  return <Child onClick={sayHi} />;\n}",
+          "description": "Pass functions from parent to child to handle events or state updates."
+        },
+        {
+          "id": 83,
+          "title": "useContext Hook",
+          "code": "import { createContext, useContext } from 'react';\n\nconst UserContext = createContext();\n\nfunction App() {\n  return (\n    <UserContext.Provider value={{ name: 'Alice' }}>\n      <Profile />\n    </UserContext.Provider>\n  );\n}\n\nfunction Profile() {\n  const user = useContext(UserContext);\n  return <p>Hello, {user.name}</p>;\n}",
+          "description": "useContext allows you to consume context data without prop drilling."
+        },
+        {
+          "id": 84,
+          "title": "useReducer Hook",
+          "code": "import { useReducer } from 'react';\n\nconst reducer = (state, action) => {\n  switch (action.type) {\n    case 'increment':\n      return { count: state.count + 1 };\n    case 'decrement':\n      return { count: state.count - 1 };\n    default:\n      return state;\n  }\n};\n\nfunction Counter() {\n  const [state, dispatch] = useReducer(reducer, { count: 0 });\n\n  return (\n    <div>\n      <p>{state.count}</p>\n      <button onClick={() => dispatch({ type: 'increment' })}>+</button>\n      <button onClick={() => dispatch({ type: 'decrement' })}>-</button>\n    </div>\n  );\n}",
+          "description": "useReducer is useful for managing more complex state logic in a component."
+        },
+        {
+          "id": 85,
+          "title": "useRef Hook",
+          "code": "import { useRef } from 'react';\n\nfunction FocusInput() {\n  const inputRef = useRef(null);\n\n  const focusInput = () => {\n    inputRef.current.focus();\n  };\n\n  return (\n    <div>\n      <input ref={inputRef} type=\"text\" />\n      <button onClick={focusInput}>Focus</button>\n    </div>\n  );\n}",
+          "description": "useRef creates a mutable reference to a DOM element or value that doesn’t trigger a re-render."
+        },
+        {
+          "id": 86,
+          "title": "React Router: Basic Setup",
+          "code": "import { BrowserRouter, Routes, Route } from 'react-router-dom';\nimport Home from './Home';\nimport About from './About';\n\nfunction App() {\n  return (\n    <BrowserRouter>\n      <Routes>\n        <Route path=\"/\" element={<Home />} />\n        <Route path=\"/about\" element={<About />} />\n      </Routes>\n    </BrowserRouter>\n  );\n}",
+          "description": "Set up routing with `BrowserRouter` and define routes using the `Routes` and `Route` components."
+        },
+        {
+          "id": 87,
+          "title": "Link Component",
+          "code": "import { Link } from 'react-router-dom';\n\nfunction Navigation() {\n  return (\n    <nav>\n      <Link to=\"/\">Home</Link>\n      <Link to=\"/about\">About</Link>\n    </nav>\n  );\n}",
+          "description": "Use `Link` instead of `<a>` to navigate between routes without reloading the page."
+        },
+        {
+          "id": 88,
+          "title": "useParams Hook",
+          "code": "import { useParams } from 'react-router-dom';\n\nfunction UserProfile() {\n  const { id } = useParams();\n  return <p>User ID: {id}</p>;\n}",
+          "description": "Access dynamic route parameters using the `useParams` hook."
+        },
+        {
+          "id": 89,
+          "title": "useNavigate Hook",
+          "code": "import { useNavigate } from 'react-router-dom';\n\nfunction GoHomeButton() {\n  const navigate = useNavigate();\n\n  return <button onClick={() => navigate('/')}>Go Home</button>;\n}",
+          "description": "Use `useNavigate` to programmatically navigate between routes."
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-      
-      
-    ]
-    
-  }
-  
+      ]
+    }
 
-
-
-
-
-
-    ]
+  ]
