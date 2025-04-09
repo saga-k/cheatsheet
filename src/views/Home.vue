@@ -19,7 +19,7 @@ export default {
     MultiSelectDropdown,
     myCard,
     draggable,
-    FancyButton
+    FancyButton,
   },
 
   //Data ----------------------------------------------------------------
@@ -29,7 +29,7 @@ export default {
       fetchedData: {
         Javascript: null,
         Vue: null,
-        React: null
+        React: null,
       },
 
       isFetched: false,
@@ -49,7 +49,7 @@ export default {
 
       scalePercentage: null,
 
-      hideIcons: false
+      hideIcons: false,
     };
   },
 
@@ -63,7 +63,6 @@ export default {
   //Methods ---------------------------------------------------------------------------
 
   methods: {
-
     //Get size from sizeinput emit and send to data to be used in canvas styling
     updateCanvasSize(Size) {
       this.canvasSize.height = `${Size.height}`;
@@ -77,21 +76,22 @@ export default {
           this.canvasSize.scrollHeight = this.$refs.MyCanvas.$refs.canvasSection.scrollHeight;
           this.canvasSize.scrollWidth = this.$refs.MyCanvas.$refs.canvasSection.scrollWidth;
         }
-      })
+      });
     },
 
     //Fetch the data
     async fetchData() {
-      const url = `${window.location.origin}/cheatsheet/data.json`
+      const url = `${window.location.origin}/cheatsheet/data.json`;
       const promise = await fetch(url);
       const data = await promise.json();
-      console.log(data)
+      console.log(data);
       this.fetchedData.Javascript = data[0].data;
       this.fetchedData.Vue = data[1].data;
+      this.fetchedData.React = data[2].data;
       this.isFetched = true;
     },
 
-    //Get selected object from autocomplete component and push data-object to cards array to be rendered. 
+    //Get selected object from autocomplete component and push data-object to cards array to be rendered.
     addCard(added) {
       this.cards.push(added);
 
@@ -101,7 +101,7 @@ export default {
           this.canvasSize.scrollHeight = this.$refs.MyCanvas.$refs.canvasSection.scrollHeight;
           this.canvasSize.scrollWidth = this.$refs.MyCanvas.$refs.canvasSection.scrollWidth;
         }
-      })
+      });
     },
 
     //Get title of removed object from autocomplete, find it in cards array and delete
@@ -113,8 +113,10 @@ export default {
       // Wait for the DOM to update before checking for overflow
       this.$nextTick(() => {
         if (this.$refs.MyCanvas) {
-          this.canvasSize.scrollHeight = this.$refs.MyCanvas.$refs.canvasSection?.scrollHeight || 0;
-          this.canvasSize.scrollWidth = this.$refs.MyCanvas.$refs.canvasSection?.scrollWidth || 0;
+          this.canvasSize.scrollHeight =
+            this.$refs.MyCanvas.$refs.canvasSection?.scrollHeight || 0;
+          this.canvasSize.scrollWidth =
+            this.$refs.MyCanvas.$refs.canvasSection?.scrollWidth || 0;
         }
       });
     },
@@ -138,34 +140,37 @@ export default {
     },
 
     onDrag() {
-      this.canvasSize.scrollHeight = this.$refs.MyCanvas.$refs.canvasSection?.scrollHeight || 0;
-      this.canvasSize.scrollWidth = this.$refs.MyCanvas.$refs.canvasSection?.scrollWidth || 0;
+      this.canvasSize.scrollHeight =
+        this.$refs.MyCanvas.$refs.canvasSection?.scrollHeight || 0;
+      this.canvasSize.scrollWidth =
+        this.$refs.MyCanvas.$refs.canvasSection?.scrollWidth || 0;
     },
 
     testHideIcons() {
       this.hideIcons = true;
 
-      this.$nextTick(() => this.createImage())
+      this.$nextTick(() => this.createImage());
     },
 
     //HTML2Canvas transforms canvas into png
     createImage() {
       console.log("something happened");
-      html2canvas(document.querySelector("#myCanvas")).then((canvas) => {
-        const dataUrl = canvas.toDataURL("image/png");
+      html2canvas(document.querySelector("#myCanvas"))
+        .then((canvas) => {
+          const dataUrl = canvas.toDataURL("image/png");
 
-        new JsFileDownloader({
-          url: dataUrl,
-          filename: "myCheatSheet.png",
-        }).catch((error) => {
-          console.error("Download failed", error);
-        });
-      })
+          new JsFileDownloader({
+            url: dataUrl,
+            filename: "myCheatSheet.png",
+          }).catch((error) => {
+            console.error("Download failed", error);
+          });
+        })
         .then(() => location.reload());
     },
   },
 
-  //Checks if canvas content is overflowing to display error-msg 
+  //Checks if canvas content is overflowing to display error-msg
   computed: {
     checkOverflow() {
       return (
@@ -177,12 +182,10 @@ export default {
 };
 </script>
 
-
 <template>
   <!--Template starts here ------------------------------------------------------>
 
   <article id="fullLayout">
-
     <!--This is where users selections are made ------------------------------->
     <div id="options-header">
       <h1>Create a custom Javascript cheat sheet</h1>
@@ -196,12 +199,34 @@ export default {
       </div>
 
       <!--Javascript dropdown here ---------------->
-      <MultiSelectDropdown class="multiSelect" @cardAdded="addCard" @cardRemoved="removeCard" v-if="isFetched"
-        :data-prop="fetchedData.Javascript" title-prop="Javascript" />
+      <MultiSelectDropdown
+        class="multiSelect"
+        @cardAdded="addCard"
+        @cardRemoved="removeCard"
+        v-if="isFetched"
+        :data-prop="fetchedData.Javascript"
+        title-prop="Javascript"
+      />
 
       <!--Vue dropdown here ---------------->
-      <MultiSelectDropdown class="multiSelect" @cardAdded="addCard" @cardRemoved="removeCard" v-if="isFetched"
-        :data-prop="fetchedData.Vue" title-prop="Vue" />
+      <MultiSelectDropdown
+        class="multiSelect"
+        @cardAdded="addCard"
+        @cardRemoved="removeCard"
+        v-if="isFetched"
+        :data-prop="fetchedData.Vue"
+        title-prop="Vue"
+      />
+
+      <!--React dropdown here ---------------->
+      <MultiSelectDropdown
+        class="multiSelect"
+        @cardAdded="addCard"
+        @cardRemoved="removeCard"
+        v-if="isFetched"
+        :data-prop="fetchedData.React"
+        title-prop="React"
+      />
     </div>
 
     <!--This is the error message that is displayed if canvas has overlow ----->
@@ -211,15 +236,24 @@ export default {
     </section>
 
     <!--This is the canvas ---------------------------------------------------->
-    <MyCanvas :style="{
-      height: canvasSize.height + 'px',
-      width: canvasSize.width + 'px',
-      transform: hasWindowOverflow ? `scale(${scalePercentage}%)` : 'none'
-    }" id="myCanvas" ref="MyCanvas">
-
-      <!--This is the canvas slot containing a draggable component that loops 
+    <MyCanvas
+      :style="{
+        height: canvasSize.height + 'px',
+        width: canvasSize.width + 'px',
+        transform: hasWindowOverflow ? `scale(${scalePercentage}%)` : 'none',
+      }"
+      id="myCanvas"
+      ref="MyCanvas"
+    >
+      <!--This is the canvas slot containing a draggable component that loops
       through the cards array ---------------------------------------------->
-      <draggable v-if="cards.length > 0" id="draggable" v-model="cards" item-key="id" @drag="onDrag">
+      <draggable
+        v-if="cards.length > 0"
+        id="draggable"
+        v-model="cards"
+        item-key="id"
+        @drag="onDrag"
+      >
         <template #item="{ element: card }">
           <myCard :card-prop="card" :hide-icons="hideIcons" />
         </template>
@@ -228,22 +262,19 @@ export default {
       <!--Canvas empty state here-------------------------------------------->
       <div id="emptyState" v-else>
         <h2>Canvas is empty</h2>
-        <h3 :canvasSize>Canvas size: {{ canvasSize.width }} x {{ canvasSize.height }} pixels.</h3>
-        <p class="pLarge"> Add some cards using the dropdown above</p>
+        <h3 :canvasSize>
+          Canvas size: {{ canvasSize.width }} x {{ canvasSize.height }} pixels.
+        </h3>
+        <p class="pLarge">Add some cards using the dropdown above</p>
       </div>
-
     </MyCanvas>
 
-    <p class="mobileOnly">This app lets you design and export your own JavaScript cheat sheets! To get the best
-      experience,
-      please visit
-      on a
-      desktop.</p>
-
+    <p class="mobileOnly">
+      This app lets you design and export your own JavaScript cheat sheets! To get the
+      best experience, please visit on a desktop.
+    </p>
   </article>
-
 </template>
-
 
 <style scoped>
 #firstRow {
@@ -322,6 +353,5 @@ export default {
   .mobileOnly {
     display: block;
   }
-
 }
 </style>
